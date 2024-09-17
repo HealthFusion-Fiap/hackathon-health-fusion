@@ -1,4 +1,4 @@
-interface ICreateDoctorInput {
+export type CreateDoctorInput = {
   name: string;
   crm: string;
   landline: string;
@@ -7,7 +7,7 @@ interface ICreateDoctorInput {
   specialties: string[];
 }
 
-interface ICreateDoctorOutput {
+export type CreateDoctorOutput = {
   id: string;
   name: string;
   crm: string;
@@ -16,3 +16,4 @@ interface ICreateDoctorOutput {
   cep: string;
   specialties: string[];
 }
+

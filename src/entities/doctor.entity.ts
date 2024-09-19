@@ -1,10 +1,16 @@
-export default class Doctor {
-  name: string;
+import { randomUUID } from "node:crypto";
 
+export class Doctor {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  cpf: string;
   crm: string;
 
-  constructor(name: string, crm: string) {
-    this.name = name;
-    this.crm = crm;
+  constructor(input: Doctor) {
+    this.id = input.id ?? randomUUID();
+
+    Object.assign(this, input);
   }
 }

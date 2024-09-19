@@ -1,19 +1,16 @@
 export type CreateDoctorInput = {
-  name: string
-  crm: string
-  landline: string
-  cellPhone: string
-  cep: string
-  specialties: string[]
-}
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  cpf: string;
+  crm: string;
+};
 
 export type CreateDoctorOutput = {
-  id: string
-  name: string
-  crm: string
-  landline: string
-  cellPhone: string
-  cep: string
-  specialties: string[]
-}
-
+  id: string;
+  name: string;
+  email: string;
+  cpf: string;
+  crm: string;
+};

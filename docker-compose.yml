@@ -1,12 +1,14 @@
 services:
-  heath-fusion-api:
+  hackathon-health-fusion:
     restart: always
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    expose:
-      - "3000"
+    environment:
+      - WATCH_FILES=${WATCH_FILES}
+    # ports:
+    #   - "3000:3000"
+    # expose:
+    #   - "3000"
     volumes:
       - .:/app

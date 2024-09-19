@@ -6,7 +6,7 @@ process.on('SIGINT', () => {
   nodeApp.kill('SIGINT');
 });
 
-const mainJs = 'dist/app/index.js';
+const mainJs = 'dist/src/index.js';
 
 const startNodeServer = () => {
   if (!fs.existsSync(mainJs)) {

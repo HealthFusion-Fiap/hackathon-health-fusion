@@ -1,13 +1,12 @@
-version: '3.8'
-
 services:
-  app:
+  heath-fusion-api:
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    expose:
+      - "3000"
     volumes:
       - .:/app
-      - /app/node_modules
-    command: npm run dev

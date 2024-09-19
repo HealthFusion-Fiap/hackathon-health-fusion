@@ -1,7 +1,7 @@
 import { AwilixContainer, asValue } from 'awilix';
 import { randomUUID } from 'crypto';
 import { NextFunction, Request, Response } from 'express';
-import { AppRequest } from '../http-server';
+import { AppRequest } from '../httpServer';
 
 export default (container: AwilixContainer) => (
   request: Request | AppRequest,

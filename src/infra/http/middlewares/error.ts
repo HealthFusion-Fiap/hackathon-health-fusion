@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { AppRequest, HttpError } from "../http-server";
+import { AppRequest, HttpError } from "../httpServer";
 import { AppError, BadRequestError, NotFoundError } from "@/domain/errors";
 import { ServerError } from "@/domain/errors/serverError";
 
@@ -20,7 +20,7 @@ export default (
   console.error('An error occurred', error);
 
   handleError(error, response);
-  
+
   next();
 };
 

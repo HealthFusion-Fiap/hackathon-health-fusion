@@ -1,7 +1,7 @@
 import 'source-map-support/register';
 import { setupContainer } from '@/infra/bootstrap';
 import { getConfig } from '@/infra/config/config';
-import { shutdownHttpServer, startHttpServer } from "@/infra/http/http-server";
+import { shutdownHttpServer, startHttpServer } from "@/infra/http/httpServer";
 
 async function init() {
   try {

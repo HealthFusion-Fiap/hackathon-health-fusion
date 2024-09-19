@@ -1,0 +1,63 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersiion": 2020,
+    "sourceType": "module",
+    "project": [
+      "./tsconfig.json"
+    ]
+  },
+  "overrides": [],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "class-methods-use-this": "off",
+    "import/extensions": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 100
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "import/export": "off",
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
+    "consistent-return": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ],
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none"
+        }
+      }
+    ],
+    "@typescript-eslint/method-signature-style": [
+      "error",
+      "property"
+    ]
+  },
+  "ignorePatterns": [
+    "jest.config.js",
+    "dist/*",
+    "tasks/*",
+    "coverage/*"
+  ]
+}

@@ -14,8 +14,6 @@ export type AppRequest = {
   container: AwilixContainer
 }
 
-export type AppResponse = {}
-
 export class HttpError extends AppError {
   public status?: number;
 }

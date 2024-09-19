@@ -1,16 +1,19 @@
 export type Config = {
-  port: number;
+  env: string
+  port: number
   database: {
-    host: string;
-    port: number;
-    username: string;
-    password: string;
-    database: string;
+    host: string
+    port: number
+    username: string
+    password: string
+    database: string
   }
 }
 
 export function getConfig(): Config {
+  // TODO: get from file (dev) or SSM (prod)
   return {
+    env: process.env.NODE_ENV || 'development',
     port: Number(process.env.PORT) || 3000,
     database: {
       host: process.env.DB_HOST || 'localhost',

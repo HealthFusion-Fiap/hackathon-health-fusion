@@ -11,7 +11,7 @@ import { Config } from '@/infra/config/config';
 
 export function setupContainer(config: Config): AwilixContainer {
   const container = createContainer({ injectionMode: InjectionMode.PROXY });
-  const env = process.env.NODE_ENV || 'development';
+  const env = process.env.NODE_ENV ?? 'development';
 
   container.register({
     env: asValue(env),
@@ -42,12 +42,12 @@ export function setupContainer(config: Config): AwilixContainer {
       },
     ],
   ], {
-      formatName: 'camelCase',
-      resolverOptions: {
-        lifetime: Lifetime.SINGLETON,
-        register: asClass,
-      },
+    formatName: 'camelCase',
+    resolverOptions: {
+      lifetime: Lifetime.SINGLETON,
+      register: asClass,
+    },
   });
-  
+
   return container;
 }

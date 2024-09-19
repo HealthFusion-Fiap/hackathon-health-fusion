@@ -1,3 +1,8 @@
+interface IAppError {
+  code: number
+  message: string
+}
+
 export class AppError extends Error implements IAppError {
   public code: number;
 
@@ -8,9 +13,4 @@ export class AppError extends Error implements IAppError {
     this.code = 1;
     this.message = 'Application Error';
   }
-}
-
-interface IAppError {
-  code: number
-  message: string
 }

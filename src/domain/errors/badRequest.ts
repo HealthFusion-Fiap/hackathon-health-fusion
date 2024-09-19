@@ -12,6 +12,6 @@ export class ValidationError extends BadRequestError {
   constructor(message?: string) {
     super();
     this.code = 140001;
-    this.message = message || 'Params Validation Failure';
+    this.message = message ?? 'Params Validation Failure';
   }
 }

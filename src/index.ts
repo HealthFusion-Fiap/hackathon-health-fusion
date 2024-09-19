@@ -1,7 +1,20 @@
 import 'source-map-support/register';
 import { setupContainer } from '@/infra/bootstrap';
 import { getConfig } from '@/infra/config/config';
-import { shutdownHttpServer, startHttpServer } from "@/infra/http/httpServer";
+import { shutdownHttpServer, startHttpServer } from '@/infra/http/httpServer';
+
+async function shutdown(exitCode: number) {
+  console.log('Stopping application...');
+
+  try {
+    await shutdownHttpServer();
+    console.log('HTTP server stopped');
+  } catch (error) {
+    console.error('Error stopping HTTP server', error);
+  }
+
+  process.exit(exitCode);
+}
 
 async function init() {
   try {
@@ -16,19 +29,6 @@ async function init() {
 
     shutdown(1);
   }
-}
-
-async function shutdown(exitCode: number) {
-  console.log('Stopping application...');
-
-  try {
-    await shutdownHttpServer();
-    console.log('HTTP server stopped');
-  } catch (error) {
-    console.error('Error stopping HTTP server', error);
-  }
-
-  process.exit(exitCode);
 }
 
 process.on('SIGINT', () => shutdown(0));

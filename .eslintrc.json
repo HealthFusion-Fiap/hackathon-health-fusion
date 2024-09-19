@@ -4,6 +4,7 @@
     "node": true
   },
   "extends": [
+    "airbnb-base",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -52,7 +53,9 @@
     "@typescript-eslint/method-signature-style": [
       "error",
       "property"
-    ]
+    ],
+    "no-console": "off",
+    "max-classes-per-file": "off"
   },
   "ignorePatterns": [
     "jest.config.js",

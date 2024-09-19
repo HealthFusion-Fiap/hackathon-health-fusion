@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   hackathon-health-fusion:
     restart: always
@@ -6,9 +8,18 @@ services:
       dockerfile: Dockerfile
     environment:
       - WATCH_MODE=${WATCH_MODE}
+
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: health_fusion
     ports:
-      - "3000:3000"
-    expose:
-      - "3000"
+      - "5432:5432"
     volumes:
-      - .:/app
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

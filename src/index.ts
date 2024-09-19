@@ -12,7 +12,7 @@ async function init() {
 
     console.log('Done!');
   } catch (error) {
-    console.error('Error initializing application', error);
+    console.error('Error initializing application!', error);
 
     shutdown(1);
   }

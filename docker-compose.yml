@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - WATCH_FILES=${WATCH_FILES}
+      - WATCH_MODE=${WATCH_MODE}
     ports:
       - "3000:3000"
     expose:

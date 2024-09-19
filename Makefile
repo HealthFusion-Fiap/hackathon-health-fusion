@@ -11,6 +11,7 @@ down:
 
 watch:
 	WATCH_MODE=1 docker-compose up -d
+	docker-compose logs --tail=10 -f
 
 logs:
 	docker-compose logs --tail=10 -f

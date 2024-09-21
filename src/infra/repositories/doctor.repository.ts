@@ -1,16 +1,19 @@
-import { CreateDoctorInput } from '@/domain/usecases/createDoctor/dtos';
-import Doctor from '@/entities/doctor.entity';
+import { Doctor } from "@/entities/doctor.entity";
+import { PrismaClient } from "@prisma/client";
 
 export default class PrismaDoctorRepository /* implements DoctorRepository */ {
-  // private readonly doctorModel: any;
+  constructor(private prisma: PrismaClient) {}
 
-  // constructor({ doctorModel }: any) {
-  //   this.doctorModel = doctorModel;
-  // }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public async create(doctor: CreateDoctorInput): Promise<Doctor> {
-    // TODO: Implement this method
-    return new Doctor('', '');
+  public async create(doctor: Doctor): Promise<void> {
+    await this.prisma.doctor.create({
+      data: {
+        cpf: doctor.cpf,
+        crm: doctor.crm,
+        email: doctor.email,
+        id: doctor.id,
+        name: doctor.name,
+        password: doctor.password,
+      },
+    });
   }
 }

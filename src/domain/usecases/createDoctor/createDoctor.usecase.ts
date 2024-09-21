@@ -1,10 +1,13 @@
-import Usecase from '../usecase';
-import { CreateDoctorInput, CreateDoctorOutput } from './dtos';
+import { Doctor } from "@/entities/doctor.entity";
+import Usecase from "../usecase";
+import { CreateDoctorInput, CreateDoctorOutput } from "./dtos";
 
 export default class CreateDoctorUsecase extends Usecase {
   async execute(data: CreateDoctorInput): Promise<CreateDoctorOutput> {
-    const doctor = await this.gateway.doctorRepository.create(data);
+    const doctor = new Doctor(data);
 
-    return doctor;
+    await this.gateway.doctorRepository.create(doctor);
+
+    return { ...doctor };
   }
 }

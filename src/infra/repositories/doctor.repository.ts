@@ -16,4 +16,11 @@ export default class PrismaDoctorRepository /* implements DoctorRepository */ {
       },
     });
   }
+
+  public async exists(doctor: Doctor): Promise<boolean> {
+    const doctorBd = this.prisma.doctor.findUnique({
+      where: { doctorId: doctor.id },
+    });
+    return doctorBd != null;
+  }
 }

@@ -40,4 +40,12 @@ export default (app: Application) => {
     // validator('createDoctor'),
     executeController('createDoctor'),
   );
+
+  app.route('/schedules/:patient_id').post(
+    executeController('createSchedule'),
+  );
+
+  app.route('/schedules/:doctorId').get(
+    executeController('listSchedule'),
+  );
 };

@@ -1,6 +1,6 @@
-import { Doctor } from "@/entities/doctor.entity";
-import Usecase from "../usecase";
-import { CreateDoctorInput, CreateDoctorOutput } from "./dtos";
+import { Doctor } from '@/entities/doctor.entity';
+import Usecase from '../usecase';
+import { CreateDoctorInput, CreateDoctorOutput } from './dtos';
 
 export default class CreateDoctorUsecase extends Usecase {
   async execute(data: CreateDoctorInput): Promise<CreateDoctorOutput> {
@@ -8,6 +8,6 @@ export default class CreateDoctorUsecase extends Usecase {
 
     await this.gateway.doctorRepository.create(doctor);
 
-    return { ...doctor };
+    return { doctor };
   }
 }

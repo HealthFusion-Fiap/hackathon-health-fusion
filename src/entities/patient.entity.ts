@@ -1,21 +1,24 @@
 import { Entity } from './entity';
 
-interface DoctorProps {
+interface PatientProps {
   id?: string
   name: string
   email: string
   password: string
   cpf: string
-  crm: string
 }
 
-export class Doctor extends Entity<DoctorProps> {
-  constructor(input: DoctorProps) {
+export class Patient extends Entity<PatientProps> {
+  constructor(input: PatientProps) {
     super(input, input.id);
   }
 
   get name() {
     return this.props.name;
+  }
+
+  get cpf() {
+    return this.props.cpf;
   }
 
   get email() {
@@ -24,13 +27,5 @@ export class Doctor extends Entity<DoctorProps> {
 
   get password() {
     return this.props.password;
-  }
-
-  get cpf() {
-    return this.props.cpf;
-  }
-
-  get crm() {
-    return this.props.crm;
   }
 }

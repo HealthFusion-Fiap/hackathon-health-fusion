@@ -1,5 +1,5 @@
-import { Doctor } from "@/entities/doctor.entity";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
+import { Doctor } from '@/entities/doctor.entity';
 
 export default class PrismaDoctorRepository /* implements DoctorRepository */ {
   constructor(private prisma: PrismaClient) {}

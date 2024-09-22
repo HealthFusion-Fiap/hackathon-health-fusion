@@ -1,8 +1,23 @@
 import { PrismaClient } from '@prisma/client';
+import { DoctorRepository } from '@/domain/repository/doctor';
 import { Doctor } from '@/entities/doctor.entity';
 
-export default class PrismaDoctorRepository /* implements DoctorRepository */ {
+export class PrismaDoctorRepository implements DoctorRepository {
   constructor(private prisma: PrismaClient) {}
+
+  findById = async (id: string): Promise<Doctor | null> => {
+    const doctor = await this.prisma.doctor.findFirst({
+      where: {
+        id,
+      },
+    });
+
+    if (!doctor) {
+      return null;
+    }
+
+    return new Doctor(doctor);
+  };
 
   public async create(doctor: Doctor): Promise<void> {
     await this.prisma.doctor.create({

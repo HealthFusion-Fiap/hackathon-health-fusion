@@ -13,5 +13,5 @@ export default abstract class Presenter {
       .json(output.body);
   }
 
-  abstract adaptOutput(data: any): { status: number; body: any };
+  abstract adaptOutput(data: any): { status: number; body: unknown };
 }

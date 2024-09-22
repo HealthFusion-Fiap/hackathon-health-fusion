@@ -20,7 +20,8 @@ export class CreateScheduleUseCase {
     const startAtToSchedule = new Date(startAt);
     const endAtToSchedule = new Date(endAt);
 
-    const isAvaliable = await this.scheduleRepository.isAvailable(startAtToSchedule, endAtToSchedule);
+    const isAvaliable = await this.scheduleRepository
+      .isAvailable(doctorId, startAtToSchedule, endAtToSchedule);
 
     if (!isAvaliable) {
       throw new BadRequestError();

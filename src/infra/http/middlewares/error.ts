@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import { AppRequest, HttpError } from '../httpServer';
 import { AppError, BadRequestError, NotFoundError } from '@/domain/errors';
 import { ServerError } from '@/domain/errors/serverError';
+import { AppRequest, HttpError } from '../httpServer';
 
 export type ErrorTypes = (
   BadRequestError |

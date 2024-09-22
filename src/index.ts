@@ -1,7 +1,7 @@
-import 'source-map-support/register';
 import { setupContainer } from '@/infra/bootstrap';
 import { getConfig } from '@/infra/config/config';
 import { shutdownHttpServer, startHttpServer } from '@/infra/http/httpServer';
+import 'source-map-support/register';
 
 async function shutdown(exitCode: number) {
   console.log('Stopping application...');

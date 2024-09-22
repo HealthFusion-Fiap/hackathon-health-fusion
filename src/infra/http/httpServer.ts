@@ -1,13 +1,13 @@
-import http from 'http';
-import httpShutdown from 'http-shutdown';
-import express from 'express';
 import { AwilixContainer } from 'awilix';
 import cors from 'cors';
+import express from 'express';
+import http from 'http';
+import httpShutdown from 'http-shutdown';
 import { Config } from '@/infra/config/config';
-import routes from './routes';
 import { AppError } from '@/domain/errors';
-import scopeMiddleware from './middlewares/scope';
 import errorMiddleware from './middlewares/error';
+import scopeMiddleware from './middlewares/scope';
+import routes from './routes';
 
 export type AppRequest = {
   id: string

@@ -11,7 +11,7 @@
     "lint": "eslint --ext .ts src",
     "start": "node dist/src/index.js",
     "watch": "npm run build && node tasks/dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Team Fusion",
   "license": "ISC",

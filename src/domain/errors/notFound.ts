@@ -1,9 +1,17 @@
-import { AppError } from './app';
+export class NotFoundError extends Error {
+  constructor(public message: string) {
+    super(message || 'Not Found');
+  }
+}
 
-export class NotFoundError extends AppError {
+export class DoctorNotFound extends NotFoundError {
   constructor() {
-    super();
-    this.code = 140400;
-    this.message = 'Not Found';
+    super('Doctor not found');
+  }
+}
+
+export class ScheduleNotFound extends NotFoundError {
+  constructor() {
+    super('Schedule not found');
   }
 }

@@ -29,7 +29,4 @@ COPY --from=builder /app .
 EXPOSE 3000
 
 # Comando para rodar a aplicação
-CMD cd "/app" &&\
-  if [ "$WATCH_MODE" == "1" ];\
-  then npm run watch;\
-  else npm run build && npm run start; fi
+CMD ["npm", "start"]

@@ -1,16 +1,36 @@
-import { randomUUID } from "node:crypto";
+import { Entity } from './entity';
 
-export class Doctor {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  cpf: string;
-  crm: string;
+interface DoctorProps {
+  id?: string
+  name: string
+  email: string
+  password: string
+  cpf: string
+  crm: string
+}
 
-  constructor(input: Doctor) {
-    this.id = input.id ?? randomUUID();
+export class Doctor extends Entity<DoctorProps> {
+  constructor(input: DoctorProps) {
+    super(input, input.id);
+  }
 
-    Object.assign(this, input);
+  get name() {
+    return this.props.name;
+  }
+
+  get email() {
+    return this.props.email;
+  }
+
+  get password() {
+    return this.props.password;
+  }
+
+  get cpf() {
+    return this.props.cpf;
+  }
+
+  get crm() {
+    return this.props.crm;
   }
 }

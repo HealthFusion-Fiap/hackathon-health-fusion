@@ -1,15 +1,33 @@
-import { randomUUID } from 'node:crypto';
+import { Doctor } from './doctor.entity';
+import { Entity } from './entity';
+import { Patient } from './patient.entity';
 
-export class Schedule {
-  id: string;
-  patient_id: string;
-  doctor_id: string;
-  start_at: Date;
-  end_at: Date;
+interface ScheduleProps {
+  id?: string
+  doctor: Doctor
+  patient?: Patient
+  startAt: Date
+  endAt: Date
+}
 
-  constructor(input: Schedule) {
-    this.id = input.id ?? randomUUID();
+export class Schedule extends Entity<ScheduleProps> {
+  constructor(input: ScheduleProps) {
+    super(input, input.id);
+  }
 
-    Object.assign(this, input);
+  get doctor() {
+    return this.props.doctor;
+  }
+
+  get patient() {
+    return this.props.patient;
+  }
+
+  get startAt() {
+    return this.props.startAt;
+  }
+
+  get endAt() {
+    return this.props.endAt;
   }
 }

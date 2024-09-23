@@ -21,6 +21,9 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "no-useless-constructor": "off",
+    "no-empty-function": "off",
+    "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "import/extensions": "off",
     "max-len": [

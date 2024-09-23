@@ -1,4 +1,4 @@
-import { Schedule } from '@/entities/schedule.entity';
+import { Schedule } from "@/entities/schedule.entity";
 import { PrismaClient } from "@prisma/client";
 
 export default class PrismaScheduleRepository /* implements DoctorRepository */ {

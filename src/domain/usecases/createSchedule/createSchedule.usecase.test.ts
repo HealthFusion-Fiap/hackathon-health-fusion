@@ -10,7 +10,7 @@ describe('Suit tests for Create Schedule Use Case', () => {
   let doctorRepository: MockProxy<DoctorRepository>;
   let createScheduleUseCase: CreateScheduleUseCase;
 
-  beforeAll(() => {
+  beforeEach(() => {
     scheduleRepository = mock();
     doctorRepository = mock();
 
@@ -24,7 +24,7 @@ describe('Suit tests for Create Schedule Use Case', () => {
       doctorId: '1',
       endAt: '2023-10-20',
       startAt: '2023-10-20',
-    })).rejects.toThrow(new NotFoundError());
+    })).rejects.toThrow(new NotFoundError('Doctor not found'));
   });
 
   it('should throw error when schedule is not available', async () => {
@@ -37,7 +37,7 @@ describe('Suit tests for Create Schedule Use Case', () => {
       doctorId: '1',
       endAt: '2023-10-20',
       startAt: '2023-10-20',
-    })).rejects.toThrow(new BadRequestError());
+    })).rejects.toThrow(new BadRequestError('Schedule not available'));
   });
 
   it('should be able to create a schedule', async () => {

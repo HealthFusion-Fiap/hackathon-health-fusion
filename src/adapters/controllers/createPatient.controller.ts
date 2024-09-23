@@ -1,11 +1,11 @@
-import { CreateScheduleUseCase } from '@/domain/usecases/createSchedule/createSchedule.usecase';
+import CreatePatientUsecase from '@/domain/usecases/createPatient/createPatient.usecase';
 import { ErrorPresenter } from '../presenters/error.presenter';
-import { SchedulePresenter } from '../presenters/schedule.presenter';
+import { PatientPresenter } from '../presenters/patient.presenter';
 import { Controller, Request, Response } from './controller';
 
-export class CreateScheduleController implements Controller {
+export class CreatePatientController implements Controller {
   constructor(
-    private useCase: CreateScheduleUseCase,
+    private useCase: CreatePatientUsecase,
   ) {
 
   }
@@ -20,13 +20,14 @@ export class CreateScheduleController implements Controller {
         };
       }
 
-      const { schedule } = await this.useCase.execute({
-        doctorId: input.body.doctorId,
-        endAt: input.body.endAt,
-        startAt: input.body.startAt,
+      const { patient } = await this.useCase.execute({
+        name: input.body.name,
+        cpf: input.body.cpf,
+        email: input.body.email,
+        password: input.body.password,
       });
 
-      const presenter = SchedulePresenter.toPresent(schedule);
+      const presenter = PatientPresenter.toPresent(patient);
 
       return { code: 201, body: presenter };
     } catch (error) {

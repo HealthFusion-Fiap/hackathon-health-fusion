@@ -1,10 +1,23 @@
+# Use uma imagem do Node.js
+FROM node:20
 
-FROM node:20-alpine as dev
+# Defina o diretório de trabalho no container
+WORKDIR /app
 
-RUN apk add git sudo bash
+# Copie o package.json e package-lock.json
+COPY package*.json ./
+
+# Instale as dependências
+RUN npm install
+
+# Copie o restante do código
+COPY . .
+
+# Compile o TypeScript para JavaScript
+RUN npm run build
+
+# Exponha a porta que a aplicação vai usar
+EXPOSE 3000
 
 # Comando para rodar a aplicação
-CMD cd "/app" &&\
-  if [ "$WATCH_MODE" == "1" ];\
-  then npm run watch;\
-  else npm run build && npm run start; fi
+CMD ["npm", "start"]

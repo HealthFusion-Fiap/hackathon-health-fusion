@@ -14,7 +14,7 @@ export class CreateScheduleUseCase {
     const doctor = await this.doctorRepository.findById(doctorId);
 
     if (!doctor) {
-      throw new NotFoundError();
+      throw new NotFoundError('Doctor not found');
     }
 
     const startAtToSchedule = new Date(startAt);
@@ -24,7 +24,7 @@ export class CreateScheduleUseCase {
       .isAvailable(doctorId, startAtToSchedule, endAtToSchedule);
 
     if (!isAvaliable) {
-      throw new BadRequestError();
+      throw new BadRequestError('Schedule not available');
     }
 
     const schedule = new Schedule({

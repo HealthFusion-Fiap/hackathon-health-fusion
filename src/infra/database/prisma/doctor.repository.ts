@@ -5,6 +5,34 @@ import { Doctor } from '@/entities/doctor.entity';
 export class PrismaDoctorRepository implements DoctorRepository {
   constructor(private prisma: PrismaClient) {}
 
+  findByCpf = async (cpf: string): Promise<Doctor | null> => {
+    const doctor = await this.prisma.doctor.findFirst({
+      where: {
+        cpf,
+      },
+    });
+
+    if (!doctor) {
+      return null;
+    }
+
+    return new Doctor(doctor);
+  };
+
+  findByCrm = async (crm: string): Promise<Doctor | null> => {
+    const doctor = await this.prisma.doctor.findFirst({
+      where: {
+        crm,
+      },
+    });
+
+    if (!doctor) {
+      return null;
+    }
+
+    return new Doctor(doctor);
+  };
+
   findById = async (id: string): Promise<Doctor | null> => {
     const doctor = await this.prisma.doctor.findFirst({
       where: {
@@ -19,7 +47,7 @@ export class PrismaDoctorRepository implements DoctorRepository {
     return new Doctor(doctor);
   };
 
-  public async create(doctor: Doctor): Promise<void> {
+  create = async (doctor: Doctor): Promise<void> => {
     await this.prisma.doctor.create({
       data: {
         cpf: doctor.cpf,
@@ -30,5 +58,5 @@ export class PrismaDoctorRepository implements DoctorRepository {
         password: doctor.password,
       },
     });
-  }
+  };
 }

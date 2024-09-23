@@ -25,8 +25,8 @@ model Doctor {
 
 model Schedule {
   id         String   @id
-  patient    Patient  @relation(fields: [patient_id], references: [id])
-  patient_id String
+  patient    Patient? @relation(fields: [patient_id], references: [id])
+  patient_id String?
   doctor     Doctor   @relation(fields: [doctor_id], references: [id])
   doctor_id  String
   startAt    DateTime @map("start_at")

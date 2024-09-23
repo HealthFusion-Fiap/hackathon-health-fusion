@@ -1,32 +1,15 @@
-import Usecase from '@/domain/usecases/usecase';
-
-export type HttpRequest = {
+export type Request = {
   body?: Record<string, any>
   params?: Record<string, any>
   query?: Record<string, any>
   // authInfo?: AuthInfo
 }
 
-export default abstract class Controller {
-  protected usecase: any;
+export type Response = {
+  code: number
+  body: unknown
+}
 
-  protected presenter: any;
-
-  constructor(data: {
-    usecase: Usecase
-    presenter: any
-  }) {
-    this.usecase = data.usecase;
-    this.presenter = data.presenter;
-  }
-
-  async executeEndpoint(input: HttpRequest) {
-    const usecaseResponse = await this.usecase.execute({
-      ...input.body,
-      ...input.query,
-      ...input.params,
-    });
-
-    return this.presenter.present(usecaseResponse);
-  }
+export abstract class Controller {
+  execute: (input: Request) => Promise<Response>;
 }

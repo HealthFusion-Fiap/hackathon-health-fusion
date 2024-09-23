@@ -1,6 +1,6 @@
 import { HashGenerator } from '@/domain/cryptography/hashGenerator';
 import { CpfAlreadyExists, CrmAlreadyExists, EmailAlreadyExists } from '@/domain/errors';
-import { DoctorRepository } from '@/domain/repository/doctor';
+import { DoctorRepository } from '@/domain/repositories/doctor';
 import { Doctor } from '@/entities/doctor.entity';
 import { CreateDoctorInput, CreateDoctorOutput } from './dtos';
 

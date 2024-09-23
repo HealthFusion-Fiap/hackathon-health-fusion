@@ -1,7 +1,7 @@
 import { mock, MockProxy } from 'jest-mock-extended';
 import { BadRequestError, NotFoundError } from '@/domain/errors';
-import { DoctorRepository } from '@/domain/repository/doctor';
-import { ScheduleRepository } from '@/domain/repository/schedule';
+import { DoctorRepository } from '@/domain/repositories/doctor';
+import { ScheduleRepository } from '@/domain/repositories/schedule';
 import { Doctor } from '@/entities/doctor.entity';
 import { CreateScheduleUseCase } from './createSchedule.usecase';
 

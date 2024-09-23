@@ -1,5 +1,5 @@
 import { ScheduleNotAvailable, ScheduleNotFound } from '@/domain/errors';
-import { ScheduleRepository } from '@/domain/repository/schedule';
+import { ScheduleRepository } from '@/domain/repositories/schedule';
 import { Schedule } from '@/entities/schedule.entity';
 import { UpdateScheduleInput, UpdateScheduleOutput } from './dtos';
 

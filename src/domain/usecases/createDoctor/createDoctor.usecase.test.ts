@@ -1,7 +1,7 @@
 import { mock, MockProxy } from 'jest-mock-extended';
 import { HashGenerator } from '@/domain/cryptography/hashGenerator';
 import { BadRequestError } from '@/domain/errors';
-import { DoctorRepository } from '@/domain/repository/doctor';
+import { DoctorRepository } from '@/domain/repositories/doctor';
 import { Doctor } from '@/entities/doctor.entity';
 import CreateDoctorUsecase from './createDoctor.usecase';
 

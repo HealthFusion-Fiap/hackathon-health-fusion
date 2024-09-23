@@ -1,6 +1,6 @@
 import { DoctorNotFound, ScheduleNotAvailable } from '@/domain/errors';
-import { DoctorRepository } from '@/domain/repository/doctor';
-import { ScheduleRepository } from '@/domain/repository/schedule';
+import { DoctorRepository } from '@/domain/repositories/doctor';
+import { ScheduleRepository } from '@/domain/repositories/schedule';
 import { Schedule } from '@/entities/schedule.entity';
 import { CreateScheduleInput, CreateScheduleOutput } from './dtos';
 

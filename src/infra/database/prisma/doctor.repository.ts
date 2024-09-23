@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { DoctorRepository } from '@/domain/repository/doctor';
+import { DoctorRepository } from '@/domain/repositories/doctor';
 import { Doctor } from '@/entities/doctor.entity';
 
 export class PrismaDoctorRepository implements DoctorRepository {

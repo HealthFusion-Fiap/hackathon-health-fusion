@@ -3,7 +3,13 @@ import { DoctorRepository } from '@/domain/repositories/doctor';
 import { Doctor } from '@/entities/doctor.entity';
 
 export class PrismaDoctorRepository implements DoctorRepository {
-  constructor(private prisma: PrismaClient) {}
+  constructor(private prisma: PrismaClient) { }
+
+  findAll = async (): Promise<Doctor[]> => {
+    const doctors = await this.prisma.doctor.findMany();
+
+    return doctors.map((doctor: any) => new Doctor(doctor));
+  };
 
   findByCpf = async (cpf: string): Promise<Doctor | null> => {
     const doctor = await this.prisma.doctor.findFirst({

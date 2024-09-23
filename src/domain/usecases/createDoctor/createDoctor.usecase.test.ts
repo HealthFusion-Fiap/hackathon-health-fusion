@@ -1,6 +1,6 @@
 import { mock, MockProxy } from 'jest-mock-extended';
 import { HashGenerator } from '@/domain/cryptography/hashGenerator';
-import { BadRequestError } from '@/domain/errors';
+import { CpfAlreadyExists, CrmAlreadyExists } from '@/domain/errors';
 import { DoctorRepository } from '@/domain/repositories/doctor';
 import { Doctor } from '@/entities/doctor.entity';
 import CreateDoctorUsecase from './createDoctor.usecase';
@@ -27,7 +27,7 @@ describe('Suit tests for Create Doctor Use Case', () => {
       email: 'doctor@gmail.com',
       name: 'doctor who',
       password: '123',
-    })).rejects.toThrow(new BadRequestError('CPF already exists'));
+    })).rejects.toThrow(new CpfAlreadyExists());
   });
 
   it('should throw error when crm already exists', async () => {
@@ -41,7 +41,7 @@ describe('Suit tests for Create Doctor Use Case', () => {
       email: 'doctor@gmail.com',
       name: 'doctor who',
       password: '123',
-    })).rejects.toThrow(new BadRequestError('CRM already exists'));
+    })).rejects.toThrow(new CrmAlreadyExists());
   });
 
   it('should be able to create a doctor', async () => {

@@ -12,6 +12,8 @@ export type CreateScheduleOutput = {
   end_at: Date;
 }
 
-export type OpenSchedules = {
+export type OpenSchedulesOutput = {
   id: string;
+  start_at: Date;
+  end_at: Date;
 }

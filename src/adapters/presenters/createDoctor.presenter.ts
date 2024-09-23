@@ -1,6 +1,4 @@
-import Presenter from './presenter';
-
-export default class CreateDoctorPresenter extends Presenter {
+export default class CreateDoctorPresenter {
   adaptOutput(data: any): { status: number; body: any } {
     return {
       status: 201,

@@ -1,13 +1,16 @@
 version: "3.8"
 
 services:
-  hackathon-health-fusion:
-    restart: always
+  health-fusion:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
     environment:
-      - WATCH_MODE=${WATCH_MODE}
+      DATABASE_URL: postgresql://root:root@localhost:5432/health_fusion?schema=public
 
   db:
     image: postgres:15

@@ -33,6 +33,20 @@ export class PrismaDoctorRepository implements DoctorRepository {
     return new Doctor(doctor);
   };
 
+  findByEmail = async (email: string): Promise<Doctor | null> => {
+    const doctor = await this.prisma.doctor.findFirst({
+      where: {
+        email,
+      },
+    });
+
+    if (!doctor) {
+      return null;
+    }
+
+    return new Doctor(doctor);
+  };
+
   findById = async (id: string): Promise<Doctor | null> => {
     const doctor = await this.prisma.doctor.findFirst({
       where: {

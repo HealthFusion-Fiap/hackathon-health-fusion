@@ -1,13 +1,10 @@
-import { BadRequestError, NotFoundError } from '@/domain/errors';
+import { ScheduleNotAvailable, ScheduleNotFound } from '@/domain/errors';
 import { ScheduleRepository } from '@/domain/repository/schedule';
 import { Schedule } from '@/entities/schedule.entity';
 import { UpdateScheduleInput, UpdateScheduleOutput } from './dtos';
 
 export class UpdateScheduleUseCase {
-  constructor(
-    private scheduleRepository: ScheduleRepository,
-  ) {
-  }
+  constructor(private scheduleRepository: ScheduleRepository) { }
 
   async execute({
     scheduleId,
@@ -17,7 +14,7 @@ export class UpdateScheduleUseCase {
     const schedule = await this.scheduleRepository.findById(scheduleId);
 
     if (!schedule) {
-      throw new NotFoundError('Schedule not found');
+      throw new ScheduleNotFound();
     }
 
     const newStartAt = new Date(startAt);
@@ -27,7 +24,7 @@ export class UpdateScheduleUseCase {
       .isAvailable(schedule.doctor.id, newStartAt, newEndAt);
 
     if (!isAvailable) {
-      throw new BadRequestError('Schedule not available');
+      throw new ScheduleNotAvailable();
     }
 
     const newSchedule = new Schedule({

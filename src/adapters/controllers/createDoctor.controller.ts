@@ -4,11 +4,7 @@ import { ErrorPresenter } from '../presenters/error.presenter';
 import { Controller, Request, Response } from './controller';
 
 export class CreateDoctorController implements Controller {
-  constructor(
-    private useCase: CreateDoctorUsecase,
-  ) {
-
-  }
+  constructor(private useCase: CreateDoctorUsecase) { }
 
   execute = async (input: Request): Promise<Response> => {
     // validation

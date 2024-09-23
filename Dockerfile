@@ -1,5 +1,8 @@
 # Use uma imagem do Node.js
-FROM node:20
+FROM node:20-alpine
+
+# Instale o musl
+RUN apk add --no-cache musl bash
 
 # Defina o diretório de trabalho no container
 WORKDIR /app

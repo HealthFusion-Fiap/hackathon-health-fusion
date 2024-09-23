@@ -1,11 +1,11 @@
 export class BadRequestError extends Error {
   constructor(public message: string) {
-    super(message);
+    super(message || 'Bad Request');
   }
 }
 
 export class ValidationError extends Error {
   constructor(public message: string) {
-    super(message);
+    super(message || 'Validation Error');
   }
 }

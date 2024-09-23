@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { PatientRepository } from '@/domain/repository/patient';
+import { PatientRepository } from '@/domain/repositories/patient';
 import { Patient } from '@/entities/patient.entity';
 
 export class PrismaPatientRepository implements PatientRepository {
@@ -9,6 +9,20 @@ export class PrismaPatientRepository implements PatientRepository {
     const patient = await this.prisma.patient.findFirst({
       where: {
         cpf,
+      },
+    });
+
+    if (!patient) {
+      return null;
+    }
+
+    return new Patient(patient);
+  };
+
+  findByEmail = async (email: string): Promise<Patient | null> => {
+    const patient = await this.prisma.patient.findFirst({
+      where: {
+        email,
       },
     });
 

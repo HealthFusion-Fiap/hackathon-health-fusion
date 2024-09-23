@@ -1,4 +1,4 @@
-import { BadRequestError, NotFoundError } from '@/domain/errors';
+import { BadRequestError, ConflictError, NotFoundError } from '@/domain/errors';
 
 export class ErrorPresenter {
   static toPresent(data: Error) {
@@ -8,10 +8,11 @@ export class ErrorPresenter {
     if (data instanceof NotFoundError) {
       code = 404;
       message = data.message;
-    }
-
-    if (data instanceof BadRequestError) {
-      code = 404;
+    } else if (data instanceof BadRequestError) {
+      code = 400;
+      message = data.message;
+    } else if (data instanceof ConflictError) {
+      code = 409;
       message = data.message;
     }
 

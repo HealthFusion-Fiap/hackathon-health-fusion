@@ -1,6 +1,6 @@
-import { BadRequestError, NotFoundError } from '@/domain/errors';
-import { DoctorRepository } from '@/domain/repository/doctor';
-import { ScheduleRepository } from '@/domain/repository/schedule';
+import { DoctorNotFound, ScheduleNotAvailable } from '@/domain/errors';
+import { DoctorRepository } from '@/domain/repositories/doctor';
+import { ScheduleRepository } from '@/domain/repositories/schedule';
 import { Schedule } from '@/entities/schedule.entity';
 import { CreateScheduleInput, CreateScheduleOutput } from './dtos';
 
@@ -14,7 +14,7 @@ export class CreateScheduleUseCase {
     const doctor = await this.doctorRepository.findById(doctorId);
 
     if (!doctor) {
-      throw new NotFoundError('Doctor not found');
+      throw new DoctorNotFound();
     }
 
     const startAtToSchedule = new Date(startAt);
@@ -24,7 +24,7 @@ export class CreateScheduleUseCase {
       .isAvailable(doctorId, startAtToSchedule, endAtToSchedule);
 
     if (!isAvaliable) {
-      throw new BadRequestError('Schedule not available');
+      throw new ScheduleNotAvailable();
     }
 
     const schedule = new Schedule({

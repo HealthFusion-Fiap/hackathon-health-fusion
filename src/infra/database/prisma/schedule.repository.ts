@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { ScheduleRepository } from '@/domain/repository/schedule';
+import { ScheduleRepository } from '@/domain/repositories/schedule';
 import { Doctor } from '@/entities/doctor.entity';
 import { Patient } from '@/entities/patient.entity';
 import { Schedule } from '@/entities/schedule.entity';

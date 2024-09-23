@@ -13,7 +13,7 @@ const doctorRepository = new PrismaDoctorRepository(prismaClient);
 const createDoctorUseCase = new CreateDoctorUsecase(doctorRepository, bcryptHasher);
 const createDoctorController = new CreateDoctorController(createDoctorUseCase);
 
-createDoctor.post('/', async (request: Request, response:Response) => {
+createDoctor.post('/', async (request: Request, response: Response) => {
   const { code, body } = await createDoctorController.execute({
     body: request.body,
   });

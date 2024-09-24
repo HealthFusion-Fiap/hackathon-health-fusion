@@ -9,10 +9,7 @@ export class PatientLoginController implements Controller {
   execute = async (input: Request): Promise<Response> => {
     try {
       if (!input.body) {
-        return {
-          body: undefined,
-          code: 400,
-        };
+        throw new ValidationError("body is empty")
       }
 
       const result = await this.useCase.execute({

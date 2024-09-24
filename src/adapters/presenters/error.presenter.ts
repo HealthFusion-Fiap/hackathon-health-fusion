@@ -1,20 +1,24 @@
-import { BadRequestError, ConflictError, NotFoundError } from '@/domain/errors';
+import {
+  BadRequestError,
+  ConflictError,
+  NotFoundError,
+  UnauthorizedError,
+} from '@/domain/errors';
+
+type ErrorMapping = [new (...args: any[]) => Error, number];
 
 export class ErrorPresenter {
-  static toPresent(data: Error) {
-    let code = 500;
-    let message = 'Unexpected Error';
+  private static errorMap: ErrorMapping[] = [
+    [BadRequestError, 400],
+    [UnauthorizerError, 401],
+    [NotFoundError, 404],
+    [ConflictError, 409],
+  ];
 
-    if (data instanceof NotFoundError) {
-      code = 404;
-      message = data.message;
-    } else if (data instanceof BadRequestError) {
-      code = 400;
-      message = data.message;
-    } else if (data instanceof ConflictError) {
-      code = 409;
-      message = data.message;
-    }
+  static toPresent(error: Error) {
+    const foundError = this.errorMap.find(([ErrorClass]) => error instanceof ErrorClass);
+    const code = foundError ? foundError[1] : 500;
+    const message = error.message || 'Unexpected Error';
 
     return {
       code,

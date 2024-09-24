@@ -1,0 +1,18 @@
+{
+  "$id": "patient-login",
+  "required": [
+    "email",
+    "password"
+  ],
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "errorMessage": "O e-mail é inválido."
+    },
+    "password": {
+      "type": "string",
+      "errorMessage": "A senha é inválida."
+    }
+  }
+}

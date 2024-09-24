@@ -1,0 +1,47 @@
+{
+  "$id": "create-doctor",
+  "required": [
+    "name",
+    "cpf",
+    "crm",
+    "email",
+    "password"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[\\wÀ-ú ]+$",
+      "maxLength": 100,
+      "errorMessage": {
+        "maxLength": "O nome deve ter no máximo 100 caracteres.",
+        "pattern": "O nome deve conter somente letras e espaços."
+      }
+    },
+    "cpf": {
+      "type": "string",
+      "format": "cpf",
+      "errorMessage": "O CPF é inválido."
+    },
+    "crm": {
+      "type": "string",
+      "pattern": "^[0-9]+$",
+      "minLength": 2,
+      "maxLength": 6,
+      "errorMessage": {
+        "minLength": "O CRM deve ter no mínimo 2 caracteres.",
+        "maxLength": "O CRM deve ter no máximo 6 caracteres.",
+        "pattern": "O CRM deve conter somente números."
+      }
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "errorMessage": "O e-mail é inválido."
+    },
+    "password": {
+      "type": "string",
+      "format": "password",
+      "errorMessage": "A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, uma letra minúscula e um número."
+    }
+  }
+}

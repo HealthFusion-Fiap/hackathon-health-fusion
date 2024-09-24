@@ -12,7 +12,7 @@ export default class ListDoctorsController implements Controller {
 
       const presenter = doctors.map(DoctorPresenter.toPresent);
 
-      return { code: 201, body: presenter };
+      return { code: 200, body: presenter };
     } catch (error) {
       console.error(error);
       return ErrorPresenter.toPresent(error as Error);

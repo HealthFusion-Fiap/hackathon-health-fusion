@@ -1,6 +1,7 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mock, MockProxy } from 'jest-mock-extended';
-import { HashGenerator } from '@/domain/cryptography/hashGenerator';
-import { BadRequestError } from '@/domain/errors';
+import { HashGenerator } from '@/domain/services/hashGenerator';
+import { CpfAlreadyExists, EmailAlreadyExists } from '@/domain/errors';
 import { PatientRepository } from '@/domain/repositories/patient';
 import { Patient } from '@/entities/patient.entity';
 import CreatePatientUsecase from './createPatient.usecase';
@@ -26,7 +27,19 @@ describe('Suit tests for Create Patient Use Case', () => {
       email: 'patient@gmail.com',
       name: 'patient who',
       password: '123',
-    })).rejects.toThrow(new BadRequestError('CPF already exists'));
+    })).rejects.toThrow(new CpfAlreadyExists());
+  });
+
+  it('should throw error when email already exists', async () => {
+    patientRepository.findByCpf.mockResolvedValue(null);
+    patientRepository.findByEmail.mockResolvedValue(mock<Patient>());
+
+    await expect(createPatientUsecase.execute({
+      cpf: '123123213',
+      email: 'patient@gmail.com',
+      name: 'patient who',
+      password: '123',
+    })).rejects.toThrow(new EmailAlreadyExists());
   });
 
   it('should be able to create a patient', async () => {

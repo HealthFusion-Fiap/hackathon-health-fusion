@@ -4,11 +4,7 @@ import { SchedulePresenter } from '../presenters/schedule.presenter';
 import { Controller, Request, Response } from './controller';
 
 export class CreateScheduleController implements Controller {
-  constructor(
-    private useCase: CreateScheduleUseCase,
-  ) {
-
-  }
+  constructor(private useCase: CreateScheduleUseCase) { }
 
   execute = async (input: Request): Promise<Response> => {
     // validation

@@ -7,7 +7,6 @@ export class UpdateScheduleController implements Controller {
   constructor(private useCase: UpdateScheduleUseCase) { }
 
   execute = async (input: Request): Promise<Response> => {
-    // validation
     try {
       if (!input.body || !input.params) {
         return {

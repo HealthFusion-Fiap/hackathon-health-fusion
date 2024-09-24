@@ -7,7 +7,6 @@ export class CreateDoctorController implements Controller {
   constructor(private useCase: CreateDoctorUsecase) { }
 
   execute = async (input: Request): Promise<Response> => {
-    // validation
     try {
       if (!input.body) {
         return {

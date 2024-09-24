@@ -7,7 +7,6 @@ export class PatientLoginController implements Controller {
   constructor(private useCase: PatientLoginUsecase) { }
 
   execute = async (input: Request): Promise<Response> => {
-    // validation
     try {
       if (!input.body) {
         return {

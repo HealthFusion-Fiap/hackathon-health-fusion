@@ -7,7 +7,6 @@ export class CreateScheduleController implements Controller {
   constructor(private useCase: CreateScheduleUseCase) { }
 
   execute = async (input: Request): Promise<Response> => {
-    // validation
     try {
       if (!input.body) {
         return {

@@ -4,14 +4,9 @@ import { PatientPresenter } from '../presenters/patient.presenter';
 import { Controller, Request, Response } from './controller';
 
 export class CreatePatientController implements Controller {
-  constructor(
-    private useCase: CreatePatientUsecase,
-  ) {
-
-  }
+  constructor(private useCase: CreatePatientUsecase) { }
 
   execute = async (input: Request): Promise<Response> => {
-    // validation
     try {
       if (!input.body) {
         return {

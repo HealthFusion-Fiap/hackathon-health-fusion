@@ -1,4 +1,4 @@
-import { NotFoundError } from '@/domain/errors';
+import { DoctorNotFound } from '@/domain/errors';
 import { ScheduleRepository } from '@/domain/repositories/schedule';
 import { DoctorRepository } from '@/domain/repositories/doctor';
 import { ListDoctorSchedulesOutput } from '@/domain/usecases/listDoctorSchedule/dtos';
@@ -10,10 +10,14 @@ export class ListDoctorSchedulesUseCase {
   ) {}
 
   async execute(doctorId: string): Promise<ListDoctorSchedulesOutput> {
-    if (await this.doctorRepository.findById(doctorId)) {
-      const schedules = await this.scheduleRepository.findOpenSchedules(doctorId);
-      return { schedules };
+    const doctor = await this.doctorRepository.findById(doctorId);
+
+    if (!doctor) {
+      throw new DoctorNotFound();
     }
-    throw new NotFoundError('doctorId not found');
+
+    const schedules = await this.scheduleRepository.findOpenSchedules(doctorId);
+
+    return { schedules };
   }
 }

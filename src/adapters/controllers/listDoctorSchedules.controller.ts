@@ -1,24 +1,18 @@
 import { Controller, Request, Response } from '@/adapters/controllers/controller';
 import { ErrorPresenter } from '@/adapters/presenters/error.presenter';
+import { SchedulePresenter } from '@/adapters/presenters/schedule.presenter';
+import { ValidationError } from '@/domain/errors';
 import {
   ListDoctorSchedulesUseCase,
-} from '@/domain/usecases/listDoctorSchedule/listDoctorSchedulesUseCase';
-import { SchedulePresenter } from '@/adapters/presenters/schedule.presenter';
+} from '@/domain/usecases/listDoctorSchedule/listDoctorSchedules.usecase';
 
 export class ListDoctorSchedulesController implements Controller {
-  constructor(
-    private useCase: ListDoctorSchedulesUseCase,
-  ) {
-
-  }
+  constructor(private useCase: ListDoctorSchedulesUseCase) { }
 
   execute = async (input: Request): Promise<Response> => {
     try {
       if (!input.params) {
-        return {
-          body: undefined,
-          code: 400,
-        };
+        throw new ValidationError('params is empty');
       }
 
       const { schedules } = await this.useCase.execute(input.params.doctorId);

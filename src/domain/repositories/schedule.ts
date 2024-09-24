@@ -5,6 +5,5 @@ export interface ScheduleRepository {
   create: (schedule: Schedule) => Promise<void>
   update: (schedule: Schedule) => Promise<void>
   isAvailable: (doctorId:string, startAt: Date, endAt: Date) => Promise<boolean>
-  findOpenSchedules: (doctorId: string) => Promise<any>
-  updatePatientSchedule: (schedule: Schedule) => Promise<void>
+  findOpenSchedules: (doctorId: string) => Promise<Schedule[]>
 }

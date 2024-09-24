@@ -76,6 +76,91 @@
 			]
 		},
 		{
+			"name": "/doctors/:doctorId/schedules",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{DOMAIN}}/doctors/:doctorId/schedules",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"doctors",
+						":doctorId",
+						"schedules"
+					],
+					"variable": [
+						{
+							"key": "doctorId",
+							"value": "46ffcbee-8582-48d4-b90c-1285ef196a56"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/doctors/:doctorId/schedules",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/doctors/:doctorId/schedules",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"doctors",
+								":doctorId",
+								"schedules"
+							],
+							"variable": [
+								{
+									"key": "doctorId",
+									"value": "46ffcbee-8582-48d4-b90c-1285ef196a56"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "119"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"77-Z5LupWWcbSDAR5yxynOkl0Bz0RQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Sep 2024 14:59:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"3d45cb54-5b61-428e-b953-73ff22972e87\",\n        \"startAt\": \"2024-10-05T13:30:00.000Z\",\n        \"endAt\": \"2024-10-05T13:46:00.000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
 			"name": "/doctors",
 			"request": {
 				"method": "POST",
@@ -676,6 +761,101 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"id\": \"3d45cb54-5b61-428e-b953-73ff22972e87\",\n    \"startAt\": \"2024-10-05T13:30:00.000Z\",\n    \"endAt\": \"2024-10-05T13:46:00.000Z\",\n    \"doctor\": {\n        \"id\": \"46ffcbee-8582-48d4-b90c-1285ef196a56\",\n        \"name\": \"nome\",\n        \"email\": \"oi@oi.com.br\",\n        \"crm\": \"50540\",\n        \"cpf\": \"12345678910\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "/patients/:patientId/schedules/:scheduleId",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{DOMAIN}}/patients/:patientId/schedules/:scheduleId",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"patients",
+						":patientId",
+						"schedules",
+						":scheduleId"
+					],
+					"variable": [
+						{
+							"key": "patientId",
+							"value": "ef90206d-56ac-48ed-94b9-8d9864ac7b15"
+						},
+						{
+							"key": "scheduleId",
+							"value": "3d45cb54-5b61-428e-b953-73ff22972e87"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/patients/:patientId/schedules/:scheduleId",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/patients/:patientId/schedules/:scheduleId",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"patients",
+								":patientId",
+								"schedules",
+								":scheduleId"
+							],
+							"variable": [
+								{
+									"key": "patientId",
+									"value": "ef90206d-56ac-48ed-94b9-8d9864ac7b15"
+								},
+								{
+									"key": "scheduleId",
+									"value": "3d45cb54-5b61-428e-b953-73ff22972e87"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "294"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"126-gTZ2QHnAXWwYyUhKmRRgqcxD0pY\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Sep 2024 15:18:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"3d45cb54-5b61-428e-b953-73ff22972e87\",\n    \"startAt\": \"2024-10-05T13:30:00.000Z\",\n    \"endAt\": \"2024-10-05T13:46:00.000Z\",\n    \"doctor\": {\n        \"id\": \"46ffcbee-8582-48d4-b90c-1285ef196a56\",\n        \"name\": \"nome\",\n        \"email\": \"oi@oi.com.br\",\n        \"crm\": \"50540\",\n        \"cpf\": \"12345678910\"\n    },\n    \"patientId\": \"ef90206d-56ac-48ed-94b9-8d9864ac7b15\"\n}"
 				}
 			]
 		}

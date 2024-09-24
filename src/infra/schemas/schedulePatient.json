@@ -1,0 +1,20 @@
+{
+  "$id": "schedule-patient",
+  "required": [
+    "patientId"
+  ],
+  "properties": {
+    "patientId": {
+      "type": "string",
+      "errorMessage": {
+        "type": "O id do paciente deve ser válido."
+      }
+    },
+    "scheduleId": {
+      "type": "string",
+      "errorMessage": {
+        "type": "O id do agendamento deve ser válido."
+      }
+    }
+  }
+}

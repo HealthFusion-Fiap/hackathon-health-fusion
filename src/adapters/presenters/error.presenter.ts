@@ -10,7 +10,7 @@ type ErrorMapping = [new (...args: any[]) => Error, number];
 export class ErrorPresenter {
   private static errorMap: ErrorMapping[] = [
     [BadRequestError, 400],
-    [UnauthorizerError, 401],
+    [UnauthorizedError, 401],
     [NotFoundError, 404],
     [ConflictError, 409],
   ];

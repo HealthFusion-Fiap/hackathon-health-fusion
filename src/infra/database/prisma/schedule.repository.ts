@@ -32,6 +32,7 @@ export class PrismaScheduleRepository implements ScheduleRepository {
 
     return new Schedule({
       ...schedule,
+      patientId: schedule.patientId as string | undefined,
       doctor,
       patient,
     });
@@ -40,19 +41,9 @@ export class PrismaScheduleRepository implements ScheduleRepository {
   update = async (schedule: Schedule): Promise<void> => {
     await this.prisma.schedule.update({
       data: {
+        patientId: schedule.patientId,
         endAt: schedule.endAt,
         startAt: schedule.startAt,
-      },
-      where: {
-        id: schedule.id,
-      },
-    });
-  };
-
-  updatePatientSchedule = async (schedule: Schedule): Promise<void> => {
-    await this.prisma.schedule.update({
-      data: {
-        patient_id: schedule.patient?.id,
       },
       where: {
         id: schedule.id,
@@ -66,7 +57,7 @@ export class PrismaScheduleRepository implements ScheduleRepository {
         id: schedule.id,
         endAt: schedule.endAt,
         startAt: schedule.startAt,
-        doctor_id: schedule.doctor.id,
+        doctorId: schedule.doctorId,
       },
     });
   };
@@ -80,17 +71,24 @@ export class PrismaScheduleRepository implements ScheduleRepository {
         endAt: {
           gte: endAt,
         },
-        doctor_id: doctorId,
+        doctorId,
       },
     });
 
     return !hasSchedule.length;
   };
 
-  findOpenSchedules = async (doctorId: string): Promise<any> => this.prisma.schedule.findMany({
-    where: {
-      doctor_id: doctorId,
-      patient_id: null,
-    },
-  });
+  findOpenSchedules = async (doctorId: string): Promise<Schedule[]> => {
+    const schedules = await this.prisma.schedule.findMany({
+      where: {
+        doctorId,
+        patientId: null,
+      },
+    });
+
+    return schedules.map((schedule: any) => new Schedule({
+      ...schedule,
+      patientId: schedule.patientId as string | undefined,
+    }));
+  };
 }

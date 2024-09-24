@@ -1,4 +1,5 @@
 import { Schedule } from '@/entities/schedule.entity';
+import { DoctorPresenter } from './doctor.presenter';
 
 export class SchedulePresenter {
   static toPresent(data: Schedule) {
@@ -6,13 +7,8 @@ export class SchedulePresenter {
       id: data.id,
       startAt: data.startAt,
       endAt: data.endAt,
-      doctor: {
-        id: data.doctor.id,
-        name: data.doctor.name,
-        email: data.doctor.email,
-        crm: data.doctor.crm,
-        cpf: data.doctor.cpf,
-      },
+      doctor: data.doctor ? DoctorPresenter.toPresent(data.doctor) : undefined,
+      patientId: data.patientId,
     };
   }
 }

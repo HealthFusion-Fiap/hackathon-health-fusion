@@ -1,24 +1,18 @@
 import { Controller, Request, Response } from '@/adapters/controllers/controller';
-import {
-  CreatePatientScheduleUseCase,
-} from '@/domain/usecases/createPatientSchedule/createPatientScheduleUseCase';
 import { ErrorPresenter } from '@/adapters/presenters/error.presenter';
 import { SchedulePresenter } from '@/adapters/presenters/schedule.presenter';
+import { ValidationError } from '@/domain/errors';
+import {
+  SchedulePatientUseCase,
+} from '@/domain/usecases/schedulePatient/schedulePatient.usecase';
 
-export class CreatePatientScheduleController implements Controller {
-  constructor(
-    private useCase: CreatePatientScheduleUseCase,
-  ) {
-
-  }
+export class SchedulePatientController implements Controller {
+  constructor(private useCase: SchedulePatientUseCase) { }
 
   execute = async (input: Request): Promise<Response> => {
     try {
       if (!input.params) {
-        return {
-          body: undefined,
-          code: 400,
-        };
+        throw new ValidationError('params is empty');
       }
 
       const { schedule } = await this.useCase.execute({

@@ -1,10 +1,10 @@
 import express from 'express';
 import { createPatient } from './create';
-import { createPatientSchedule } from '@/infra/api/patients/createSchedule';
+import { schedulePatient } from '@/infra/api/patients/schedule';
 
 const patientRoutes = express.Router();
 
 patientRoutes.use(createPatient);
-patientRoutes.use(createPatientSchedule);
+patientRoutes.use(schedulePatient);
 
 export { patientRoutes };

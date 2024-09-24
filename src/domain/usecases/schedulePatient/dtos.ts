@@ -1,10 +1,10 @@
 import { Schedule } from '@/entities/schedule.entity';
 
-export type CreatePatientScheduleInput = {
+export type SchedulePatientInput = {
   patientId: string
   scheduleId: string
 };
 
-export type CreatePatientScheduleOutput = {
+export type SchedulePatientOutput = {
   schedule: Schedule
 }

@@ -28,11 +28,10 @@ export class UpdateScheduleUseCase {
     }
 
     const newSchedule = new Schedule({
-      doctor: schedule.doctor,
       endAt: newEndAt,
       startAt: newStartAt,
       id: scheduleId,
-    });
+    } as any);
 
     await this.scheduleRepository.update(newSchedule);
 

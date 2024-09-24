@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mock, MockProxy } from 'jest-mock-extended';
 import { BadRequestError, NotFoundError } from '@/domain/errors';
 import { DoctorRepository } from '@/domain/repositories/doctor';
@@ -71,6 +72,7 @@ describe('Suit tests for Create Schedule Use Case', () => {
             password: 'doctor cool',
           },
         },
+        doctorId: expect.any(String),
         endAt: new Date('2023-10-20T00:00:00.000Z'),
         startAt: new Date('2023-10-20T00:00:00.000Z'),
       },

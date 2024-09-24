@@ -1,3 +1,4 @@
+import { ValidationError } from '@/domain/errors';
 import { UpdateScheduleUseCase } from '@/domain/usecases/updateSchedule/updateSchedule.usecase';
 import { ErrorPresenter } from '../presenters/error.presenter';
 import { SchedulePresenter } from '../presenters/schedule.presenter';
@@ -9,10 +10,7 @@ export class UpdateScheduleController implements Controller {
   execute = async (input: Request): Promise<Response> => {
     try {
       if (!input.body || !input.params) {
-        return {
-          body: undefined,
-          code: 400,
-        };
+        throw new ValidationError('body or params is empty');
       }
 
       const { schedule } = await this.useCase.execute({

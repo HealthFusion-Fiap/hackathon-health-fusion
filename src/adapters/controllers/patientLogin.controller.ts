@@ -1,3 +1,4 @@
+import { ValidationError } from '@/domain/errors';
 import PatientLoginUsecase from '@/domain/usecases/patientLogin/patientLogin.usecase';
 import { AuthPresenter } from '../presenters/auth.presenter';
 import { ErrorPresenter } from '../presenters/error.presenter';
@@ -9,7 +10,7 @@ export class PatientLoginController implements Controller {
   execute = async (input: Request): Promise<Response> => {
     try {
       if (!input.body) {
-        throw new ValidationError("body is empty")
+        throw new ValidationError('body is empty');
       }
 
       const result = await this.useCase.execute({

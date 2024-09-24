@@ -26,9 +26,10 @@ describe('Suit tests for Patient Login Controller', () => {
       body: undefined,
     };
 
-    const { code } = await patientLoginController.execute(input);
+    const { code, body } = await patientLoginController.execute(input);
 
     expect(code).toBe(400);
+    expect(body).toEqual({ message: 'body is empty' });
   });
 
   it('should return 201 when patient is created', async () => {

@@ -2,6 +2,7 @@ import DoctorLoginUsecase from '@/domain/usecases/doctorLogin/doctorLogin.usecas
 import { AuthPresenter } from '../presenters/auth.presenter';
 import { ErrorPresenter } from '../presenters/error.presenter';
 import { Controller, Request, Response } from './controller';
+import { ValidationError } from '@/domain/errors';
 
 export class DoctorLoginController implements Controller {
   constructor(private useCase: DoctorLoginUsecase) { }
@@ -9,10 +10,7 @@ export class DoctorLoginController implements Controller {
   execute = async (input: Request): Promise<Response> => {
     try {
       if (!input.body) {
-        return {
-          body: undefined,
-          code: 400,
-        };
+        throw new ValidationError('body is empty');
       }
 
       const result = await this.useCase.execute({

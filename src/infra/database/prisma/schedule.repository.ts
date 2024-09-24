@@ -49,6 +49,17 @@ export class PrismaScheduleRepository implements ScheduleRepository {
     });
   };
 
+  updatePatientSchedule = async (schedule: Schedule): Promise<void> => {
+    await this.prisma.schedule.update({
+      data: {
+        patient_id: schedule.patient?.id,
+      },
+      where: {
+        id: schedule.id,
+      },
+    });
+  };
+
   create = async (schedule: Schedule): Promise<void> => {
     await this.prisma.schedule.create({
       data: {
@@ -75,4 +86,11 @@ export class PrismaScheduleRepository implements ScheduleRepository {
 
     return !hasSchedule.length;
   };
+
+  findOpenSchedules = async (doctorId: string): Promise<any> => this.prisma.schedule.findMany({
+    where: {
+      doctor_id: doctorId,
+      patient_id: null,
+    },
+  });
 }

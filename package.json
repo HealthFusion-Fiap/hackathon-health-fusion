@@ -11,9 +11,9 @@
     "lint": "eslint --ext .ts src",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
-    "migrate": "npx prisma migrate",
+    "migrate": "npx prisma migrate dev",
     "start": "npx --prefix dist prisma generate && node dist/src/infra/api/server.js",
-    "dev": "nodemon -r tsconfig-paths/register src/infra/api/server.ts"
+    "dev": "npm i && npm run migrate && nodemon -r tsconfig-paths/register src/infra/api/server.ts"
   },
   "author": "Team Fusion",
   "license": "ISC",

@@ -1,29 +1,22 @@
+import { ValidationError } from '@/domain/errors';
 import { UpdateScheduleUseCase } from '@/domain/usecases/updateSchedule/updateSchedule.usecase';
 import { ErrorPresenter } from '../presenters/error.presenter';
 import { SchedulePresenter } from '../presenters/schedule.presenter';
 import { Controller, Request, Response } from './controller';
 
 export class UpdateScheduleController implements Controller {
-  constructor(
-    private useCase: UpdateScheduleUseCase,
-  ) {
-
-  }
+  constructor(private useCase: UpdateScheduleUseCase) { }
 
   execute = async (input: Request): Promise<Response> => {
-    // validation
     try {
       if (!input.body || !input.params) {
-        return {
-          body: undefined,
-          code: 400,
-        };
+        throw new ValidationError('body or params is empty');
       }
 
       const { schedule } = await this.useCase.execute({
         endAt: input.body.endAt,
         startAt: input.body.startAt,
-        scheduleId: input.params.id,
+        scheduleId: input.params.scheduleId,
       });
 
       const presenter = SchedulePresenter.toPresent(schedule);

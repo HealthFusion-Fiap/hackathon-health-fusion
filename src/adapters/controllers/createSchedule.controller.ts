@@ -2,22 +2,15 @@ import { CreateScheduleUseCase } from '@/domain/usecases/createSchedule/createSc
 import { ErrorPresenter } from '../presenters/error.presenter';
 import { SchedulePresenter } from '../presenters/schedule.presenter';
 import { Controller, Request, Response } from './controller';
+import { ValidationError } from '@/domain/errors';
 
 export class CreateScheduleController implements Controller {
-  constructor(
-    private useCase: CreateScheduleUseCase,
-  ) {
-
-  }
+  constructor(private useCase: CreateScheduleUseCase) { }
 
   execute = async (input: Request): Promise<Response> => {
-    // validation
     try {
       if (!input.body) {
-        return {
-          body: undefined,
-          code: 400,
-        };
+        throw new ValidationError('body is empty');
       }
 
       const { schedule } = await this.useCase.execute({

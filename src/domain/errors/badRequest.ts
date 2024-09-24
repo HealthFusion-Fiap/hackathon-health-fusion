@@ -4,7 +4,7 @@ export class BadRequestError extends Error {
   }
 }
 
-export class ValidationError extends Error {
+export class ValidationError extends BadRequestError {
   constructor(public message: string) {
     super(message || 'Validation Error');
   }

@@ -1,23 +1,16 @@
+import { ValidationError } from '@/domain/errors';
 import CreatePatientUsecase from '@/domain/usecases/createPatient/createPatient.usecase';
 import { ErrorPresenter } from '../presenters/error.presenter';
 import { PatientPresenter } from '../presenters/patient.presenter';
 import { Controller, Request, Response } from './controller';
 
 export class CreatePatientController implements Controller {
-  constructor(
-    private useCase: CreatePatientUsecase,
-  ) {
-
-  }
+  constructor(private useCase: CreatePatientUsecase) { }
 
   execute = async (input: Request): Promise<Response> => {
-    // validation
     try {
       if (!input.body) {
-        return {
-          body: undefined,
-          code: 400,
-        };
+        throw new ValidationError('body is empty');
       }
 
       const { patient } = await this.useCase.execute({

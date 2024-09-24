@@ -11,8 +11,9 @@
     "lint": "eslint --ext .ts src",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
+    "migrate": "npx prisma migrate dev",
     "start": "npx --prefix dist prisma generate && node dist/src/infra/api/server.js",
-    "dev": "nodemon -r tsconfig-paths/register src/infra/api/server.ts"
+    "dev": "npm i && npm run migrate && nodemon -r tsconfig-paths/register src/infra/api/server.ts"
   },
   "author": "Team Fusion",
   "license": "ISC",
@@ -22,7 +23,7 @@
     "@prisma/client": "^5.19.1",
     "ajv": "^8.17.1",
     "ajv-errors": "^3.0.0",
-    "ajv-formats": "^3.0.1",
+    "ajv-formats": "^2.1.1",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "express": "^4.21.0",

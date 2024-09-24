@@ -1,4 +1,4 @@
-import { HashGenerator } from '@/domain/cryptography/hashGenerator';
+import { HashGenerator } from '@/domain/services/hashGenerator';
 import { CpfAlreadyExists, CrmAlreadyExists, EmailAlreadyExists } from '@/domain/errors';
 import { DoctorRepository } from '@/domain/repositories/doctor';
 import { Doctor } from '@/entities/doctor.entity';

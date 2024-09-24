@@ -1,0 +1,30 @@
+{
+  "$id": "create-schedule",
+  "required": [
+    "doctorId",
+    "startAt",
+    "endAt"
+  ],
+  "properties": {
+    "doctorId": {
+      "type": "string",
+      "errorMessage": {
+        "type": "O id do médico deve ser válido."
+      }
+    },
+    "startAt": {
+      "type": "string",
+      "format": "date-time",
+      "errorMessage": {
+        "format": "O horário de início deve ser válido."
+      }
+    },
+    "endAt": {
+      "type": "string",
+      "format": "date-time",
+      "errorMessage": {
+        "format": "O horário de término deve ser válido."
+      }
+    }
+  }
+}

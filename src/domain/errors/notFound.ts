@@ -15,3 +15,9 @@ export class ScheduleNotFound extends NotFoundError {
     super('Schedule not found');
   }
 }
+
+export class PatientNotFound extends NotFoundError {
+  constructor() {
+    super('Patient not found');
+  }
+}

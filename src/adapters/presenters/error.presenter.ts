@@ -1,11 +1,17 @@
-import { BadRequestError, ConflictError, NotFoundError } from '@/domain/errors';
+import {
+  BadRequestError,
+  ConflictError,
+  NotFoundError,
+  UnauthorizedError,
+} from '@/domain/errors';
 
 type ErrorMapping = [new (...args: any[]) => Error, number];
 
 export class ErrorPresenter {
   private static errorMap: ErrorMapping[] = [
-    [NotFoundError, 404],
     [BadRequestError, 400],
+    [UnauthorizerError, 401],
+    [NotFoundError, 404],
     [ConflictError, 409],
   ];
 

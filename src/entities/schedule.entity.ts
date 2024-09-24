@@ -30,4 +30,14 @@ export class Schedule extends Entity<ScheduleProps> {
   get endAt() {
     return this.props.endAt;
   }
+
+  updatePatientId(patientId: string) {
+    this.props.patient = new Patient({
+      id: patientId,
+      name: '',
+      cpf: '',
+      password: '',
+      email: '',
+    });
+  }
 }

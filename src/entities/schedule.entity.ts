@@ -4,7 +4,9 @@ import { Patient } from './patient.entity';
 
 interface ScheduleProps {
   id?: string
+  doctorId: string
   doctor: Doctor
+  patientId?: string
   patient?: Patient
   startAt: Date
   endAt: Date
@@ -15,8 +17,20 @@ export class Schedule extends Entity<ScheduleProps> {
     super(input, input.id);
   }
 
+  get doctorId() {
+    return this.props.doctorId;
+  }
+
   get doctor() {
     return this.props.doctor;
+  }
+
+  get patientId(): string | null {
+    return this.props.patientId ?? null;
+  }
+
+  set patientId(patientId: string) {
+    this.props.patientId = patientId;
   }
 
   get patient() {

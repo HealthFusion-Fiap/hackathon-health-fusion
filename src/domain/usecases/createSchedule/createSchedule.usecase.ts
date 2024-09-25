@@ -28,6 +28,7 @@ export class CreateScheduleUseCase {
     }
 
     const schedule = new Schedule({
+      doctorId: doctor.id,
       doctor,
       endAt: endAtToSchedule,
       startAt: startAtToSchedule,

@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mock, MockProxy } from 'jest-mock-extended';
 import { BadRequestError, NotFoundError } from '@/domain/errors';
 import { ScheduleRepository } from '@/domain/repositories/schedule';
@@ -44,10 +45,12 @@ describe('Suit tests for Update Schedule Use Case', () => {
       email: 'doctor@email.com',
       name: 'Doctor who',
       password: 'doctor cool',
+      id: '1',
     });
 
     const schedule = new Schedule({
       id: '1',
+      doctorId: doctor.id,
       doctor,
       startAt: new Date('2024-10-10'),
       endAt: new Date('2025-10-10'),
@@ -65,16 +68,6 @@ describe('Suit tests for Update Schedule Use Case', () => {
     expect(newSchedule).toEqual({
       _id: '1',
       props: {
-        doctor: {
-          _id: doctor.id,
-          props: {
-            cpf: '23123123',
-            crm: '121',
-            email: 'doctor@email.com',
-            name: 'Doctor who',
-            password: 'doctor cool',
-          },
-        },
         endAt: new Date('2025-11-11T00:00:00.000Z'),
         id: '1',
         startAt: new Date('2024-11-11T00:00:00.000Z'),

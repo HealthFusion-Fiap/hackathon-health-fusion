@@ -1,0 +1,14 @@
+{
+  "$id": "list-doctor-schedules",
+  "required": [
+    "doctorId"
+  ],
+  "properties": {
+    "doctorId": {
+      "type": "string",
+      "errorMessage": {
+        "type": "O id do médico deve ser válido."
+      }
+    }
+  }
+}

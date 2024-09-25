@@ -1,25 +1,31 @@
-# Use uma imagem do Node.js
-FROM node:20-alpine
+# Use an official Node.js image
+FROM node:20-alpine as builder
 
-# Instale o musl
-RUN apk add --no-cache musl bash
-
-# Defina o diretório de trabalho no container
+# Set the working directory
 WORKDIR /app
 
-# Copie o package.json e package-lock.json
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Instale as dependências
+# Install dependencies
 RUN npm install
 
-# Copie o restante do código
+# Copy the rest of the application code
 COPY . .
 
-# Compile o TypeScript para JavaScript
+# Build the application (if needed)
 RUN npm run build
 
-# Exponha a porta que a aplicação vai usar
+# Use a smaller image for production
+FROM node:20-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the built application from the builder stage
+COPY --from=builder /app .
+
+# Expose the port the app runs on
 EXPOSE 3000
 
 # Comando para rodar a aplicação

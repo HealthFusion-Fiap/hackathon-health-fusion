@@ -11,6 +11,7 @@ services:
       DATABASE_URL: postgresql://root:root@localhost:5432/health_fusion?schema=public
       MJ_APIKEY_PUBLIC: replace_mj_public_key
       MJ_APIKEY_PRIVATE: replace_mj_private_key
+      MJ_MAIL_SENDER: replace_mj_sender
 
   db:
     image: postgres:15

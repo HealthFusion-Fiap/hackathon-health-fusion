@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "npm i && tsc && tsc-alias && cp package*.json dist/ && npm install --production --prefix dist && cp -r prisma dist/ && npx prisma generate --schema=./prisma/schema.prisma --output=./dist/prisma",
+    "build": "npm i && tsc && tsc-alias && cp package*.json dist/ && npm install --production --prefix dist && cp -r prisma dist/ && npx prisma generate --schema=./prisma/schema.prisma",
     "lint": "eslint --ext .ts src",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",

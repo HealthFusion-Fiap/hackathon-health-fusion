@@ -1,8 +1,6 @@
 services:
   health-fusion:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: health-fusion
     ports:
       - "3000:3000"
     depends_on:

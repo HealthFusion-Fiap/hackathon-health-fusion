@@ -54,6 +54,13 @@ jobs:
           docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
           echo "IMAGE_URI=$IMAGE_URI" >> $GITHUB_ENV
+          echo "IMAGE_URI=$IMAGE_URI" >> $GITHUB_OUTPUT
+
+      - name: Echo image created
+        env: 
+          IMG: ${{steps.build-image.outputs.IMAGE_URI}}
+        run: |
+          echo $IMG  
 
       - name: Download task definition
         env:
@@ -71,7 +78,7 @@ jobs:
         with:
             task-definition: task_definition.json
             container-name: ${{ vars.MY_CONTAINER_NAME }}
-            image: 211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:latest
+            image: ${{steps.build-image.outputs.IMAGE_URI}}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1

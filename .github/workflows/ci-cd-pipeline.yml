@@ -63,7 +63,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-            task-definition: taskDefinition.json
+            task-definition: taskdefinition.json
             container-name: ${{ vars.ECS_TASK_DEFINITION }}
             image: 211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:latest
 

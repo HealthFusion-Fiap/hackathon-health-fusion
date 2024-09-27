@@ -59,7 +59,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-            task-definition: /terraform/ecs/templates/ecs/health_fusion_app.json.tpl
+            task-definition: ./terraform/ecs/templates/ecs/health_fusion_app.json.tpl
             container-name: ${{ vars.ECS_TASK_DEFINITION }}
             image: 211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:latest
 

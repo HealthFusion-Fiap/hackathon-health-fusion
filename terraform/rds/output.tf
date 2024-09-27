@@ -5,5 +5,5 @@ output "rds_public_sg_id" {
 
 output "customer_db_instance_endpoint" {
   description = "The connection to healthfusion db endpoint"
-  value       = aws_db_instance.customer_db.endpoint
+  value       = aws_db_instance.health_fusion_db.endpoint
 }

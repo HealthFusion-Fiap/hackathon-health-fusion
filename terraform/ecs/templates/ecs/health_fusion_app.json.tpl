@@ -2,6 +2,16 @@
   {
     "name": "health-fusion-app",
     "image": "${app_image}",
+    "environment": [
+      {
+        "name": "JWT_SECRET",
+        "value": "secret"
+      },
+      {
+        "name": "DATABASE_URL",
+        "value": "${database_url}"
+      }
+    ],
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
     "networkMode": "awsvpc",

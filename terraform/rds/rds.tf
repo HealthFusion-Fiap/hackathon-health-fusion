@@ -4,7 +4,7 @@ resource "aws_db_instance" "health_fusion_db" {
   engine               = "postgres"
   engine_version       = "16.2"
   instance_class       = var.db_instance_class
-  identifier           = "postgres-customer"
+  identifier           = "postgres-health-fusion"
   db_name              = var.rw_db_name
   username             = var.rw_db_username
   password             = var.rw_db_password

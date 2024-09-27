@@ -25,7 +25,7 @@ variable "az_count" {
 //Sugestão: deixar vazio e deixar dar erro a primeira vez que o ECS subir, para obrigar a dar start no GA e subir imagem atualizada
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:c3db471"
+  default     = "211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:9c79e66"
 }
 
 variable "app_port" {
@@ -36,7 +36,7 @@ variable "app_port" {
 
 variable "app_count" {
   description = "Number of docker containers to run"
-  default     = 2
+  default     = 5
 }
 
 variable "health_check_path" {

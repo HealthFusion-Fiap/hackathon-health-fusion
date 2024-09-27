@@ -56,15 +56,17 @@ jobs:
       #     echo "IMAGE_URI=$IMAGE_URI" >> $GITHUB_ENV
 
       - name: Download task definition
+        env:
+          ECS_TASK_DEFINITION: ${{ vars.ECS_TASK_DEFINITION }}
         run: |
-          aws ecs describe-task-definition --task-definition health-fusion-app-task --query taskDefinition > taskdefinition.json
+          aws ecs describe-task-definition --task-definition $ECS_TASK_DEFINITION --query taskDefinition > task_definition.json
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-            task-definition: taskdefinition.json
-            container-name: health-fusion-app
+            task-definition: task_definition.json
+            container-name: ${{ vars.MY_CONTAINER_NAME }}
             image: 211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:latest
 
       - name: Deploy Amazon ECS task definition

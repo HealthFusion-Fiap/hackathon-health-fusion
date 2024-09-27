@@ -23,4 +23,7 @@ locals {
   aws_public_subnet_id  = data.terraform_remote_state.network_state.outputs.public_subnet_id
   aws_public_subnet2_id = data.terraform_remote_state.network_state.outputs.public_subnet2_id
   aws_private_subnet_id = data.terraform_remote_state.network_state.outputs.private_subnet_id
+  rw_db_endpoint        = data.terraform_remote_state.rds_state.outputs.health_fusion_db_instance_endpoint
+  rw_db_username        = data.terraform_remote_state.rds_state.outputs.health_fusion_db_rw_db_username
+  rw_db_password        = data.terraform_remote_state.rds_state.outputs.health_fusion_db_rw_db_password
 }

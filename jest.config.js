@@ -23,7 +23,7 @@ module.exports = {
   ],
   coverageReporters: ['lcov', 'text', 'text-summary'],
   moduleDirectories: ['node_modules', 'src'],
-  collectCoverage: false,
+  collectCoverage: true,
   collectCoverageFrom: ['src/**/*.{ts,js,jsx}'],
   coverageThreshold: {
     global: {

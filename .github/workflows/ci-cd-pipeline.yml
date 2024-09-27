@@ -55,11 +55,15 @@ jobs:
       #     docker push $IMAGE_URI
       #     echo "IMAGE_URI=$IMAGE_URI" >> $GITHUB_ENV
 
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition health-fusion-app-task --query taskDefinition > taskdefinition.json
+
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-            task-definition: terraform/ecs/templates/ecs/health_fusion_app.json.tpl
+            task-definition: taskDefinition.json
             container-name: ${{ vars.ECS_TASK_DEFINITION }}
             image: 211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:latest
 

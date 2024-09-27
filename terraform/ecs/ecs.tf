@@ -2,6 +2,14 @@ resource "aws_ecs_cluster" "main" {
   name = "health-fusion-cluster"
 }
 
+variable "database_prisma_start" {
+  default = "postgresql://"
+}
+
+variable "database_prisma_end" {
+  default = "/health_fusion?schema=public"
+}
+
 data "template_file" "health_fusion_app" {
   template = file("./templates/ecs/health_fusion_app.json.tpl")
 
@@ -11,7 +19,8 @@ data "template_file" "health_fusion_app" {
     fargate_cpu    = var.fargate_cpu
     fargate_memory = var.fargate_memory
     aws_region     = var.region
-    database_url   = "postgresql://postgres:rootroot@postgres-customer.c9emy44wan4g.us-east-1.rds.amazonaws.com:5432/health_fusion?schema=public"
+    // database_url   = "postgresql://postgres:rootroot@postgres-customer.c9emy44wan4g.us-east-1.rds.amazonaws.com:5432/health_fusion?schema=public"
+    database_url = "${var.database_prisma_start}${local.rw_db_username}:${local.rw_db_password}@${local.rw_db_endpoint}${var.database_prisma_end}"
   }
 }
 

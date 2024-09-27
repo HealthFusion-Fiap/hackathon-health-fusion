@@ -1,11 +1,13 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { mock, MockProxy } from 'jest-mock-extended';
-import { UpdateScheduleUseCase } from '@/domain/usecases/updateSchedule/updateSchedule.usecase';
-import { UpdateScheduleController } from './updateSchedule.controller';
-import { Schedule } from '@/entities/schedule.entity';
 import { BadRequestError } from '@/domain/errors';
+import { Jwt } from '@/domain/services/jwt';
+import { UpdateScheduleUseCase } from '@/domain/usecases/updateSchedule/updateSchedule.usecase';
+import { Schedule } from '@/entities/schedule.entity';
+import { UpdateScheduleController } from './updateSchedule.controller';
 
 describe('Suit tests for Update Schedule Controller', () => {
+  let jwt: MockProxy<Jwt>;
   let updateScheduleUsecase: MockProxy<UpdateScheduleUseCase>;
   let updateScheduleController: UpdateScheduleController;
 
@@ -15,8 +17,9 @@ describe('Suit tests for Update Schedule Controller', () => {
 
   beforeEach(() => {
     updateScheduleUsecase = mock();
+    jwt = mock();
 
-    updateScheduleController = new UpdateScheduleController(updateScheduleUsecase);
+    updateScheduleController = new UpdateScheduleController(updateScheduleUsecase, jwt);
   });
 
   afterAll(() => {
@@ -56,9 +59,13 @@ describe('Suit tests for Update Schedule Controller', () => {
       params: {
         id: '123',
       },
+      headers: {
+        authorization: '1312312',
+      },
     };
 
     updateScheduleUsecase.execute.mockRejectedValue(new BadRequestError('Bad Request'));
+    jwt.login.mockResolvedValue('123' as never);
 
     const { code, body } = await updateScheduleController.execute(input);
 
@@ -75,10 +82,14 @@ describe('Suit tests for Update Schedule Controller', () => {
       params: {
         id: '123',
       },
+      headers: {
+        authorization: '123',
+      },
     };
 
     const schedule = mock<Schedule>();
     updateScheduleUsecase.execute.mockResolvedValue({ schedule });
+    jwt.login.mockResolvedValue('123' as never);
 
     const { code } = await updateScheduleController.execute(input);
 
@@ -94,9 +105,13 @@ describe('Suit tests for Update Schedule Controller', () => {
       params: {
         id: '123',
       },
+      headers: {
+        authorization: '1312312',
+      },
     };
 
     updateScheduleUsecase.execute.mockRejectedValue(new Error());
+    jwt.login.mockResolvedValue('123' as never);
 
     const { code } = await updateScheduleController.execute(input);
 

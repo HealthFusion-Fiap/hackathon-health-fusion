@@ -1,12 +1,14 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { mock, MockProxy } from 'jest-mock-extended';
-import { CreateScheduleUseCase } from '@/domain/usecases/createSchedule/createSchedule.usecase';
-import { CreateScheduleController } from './createSchedule.controller';
-import { Schedule } from '@/entities/schedule.entity';
 import { DoctorNotFound } from '@/domain/errors';
+import { Jwt } from '@/domain/services/jwt';
+import { CreateScheduleUseCase } from '@/domain/usecases/createSchedule/createSchedule.usecase';
+import { Schedule } from '@/entities/schedule.entity';
+import { CreateScheduleController } from './createSchedule.controller';
 
 describe('Suit tests for Create Schedule Controller', () => {
   let createScheduleUsecase: MockProxy<CreateScheduleUseCase>;
+  let jwt: MockProxy<Jwt>;
   let createScheduleController: CreateScheduleController;
 
   beforeAll(() => {
@@ -15,8 +17,9 @@ describe('Suit tests for Create Schedule Controller', () => {
 
   beforeEach(() => {
     createScheduleUsecase = mock();
+    jwt = mock();
 
-    createScheduleController = new CreateScheduleController(createScheduleUsecase);
+    createScheduleController = new CreateScheduleController(createScheduleUsecase, jwt);
   });
 
   afterAll(() => {
@@ -40,9 +43,13 @@ describe('Suit tests for Create Schedule Controller', () => {
         startAt: '2024-09-23T15:00:00.000Z',
         endAt: '2024-09-23T16:00:00.000Z',
       },
+      headers: {
+        authorization: '123',
+      },
     };
 
     createScheduleUsecase.execute.mockRejectedValue(new DoctorNotFound());
+    jwt.login.mockResolvedValue('123' as never);
 
     const { code, body } = await createScheduleController.execute(input);
 
@@ -57,10 +64,14 @@ describe('Suit tests for Create Schedule Controller', () => {
         startAt: '2024-09-23T15:00:00.000Z',
         endAt: '2024-09-23T16:00:00.000Z',
       },
+      headers: {
+        authorization: '123',
+      },
     };
 
     const schedule = mock<Schedule>();
     createScheduleUsecase.execute.mockResolvedValue({ schedule });
+    jwt.login.mockResolvedValue('123' as never);
 
     const { code } = await createScheduleController.execute(input);
 
@@ -74,9 +85,13 @@ describe('Suit tests for Create Schedule Controller', () => {
         startAt: '2024-09-23T15:00:00.000Z',
         endAt: '2024-09-23T16:00:00.000Z',
       },
+      headers: {
+        authorization: '123',
+      },
     };
 
     createScheduleUsecase.execute.mockRejectedValue(new Error());
+    jwt.login.mockResolvedValue('123' as never);
 
     const { code } = await createScheduleController.execute(input);
 

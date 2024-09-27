@@ -18,7 +18,11 @@ export class ErrorPresenter {
   static toPresent(error: Error) {
     const foundError = this.errorMap.find(([ErrorClass]) => error instanceof ErrorClass);
     const code = foundError ? foundError[1] : 500;
-    const message = error.message || 'Unexpected Error';
+    let { message } = error;
+
+    if (code === 500) {
+      message = 'Unexpected Error';
+    }
 
     return {
       code,

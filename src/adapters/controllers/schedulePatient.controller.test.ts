@@ -1,10 +1,12 @@
 import { mock, MockProxy } from 'jest-mock-extended';
-import { SchedulePatientUseCase } from '@/domain/usecases/schedulePatient/schedulePatient.usecase';
 import { SchedulePatientController } from '@/adapters/controllers/schedulePatient.controller';
+import { Jwt } from '@/domain/services/jwt';
+import { SchedulePatientUseCase } from '@/domain/usecases/schedulePatient/schedulePatient.usecase';
 import { Schedule } from '@/entities/schedule.entity';
 
 describe('Suit tests for Update Schedule Controller', () => {
   let schedulePatientUseCase: MockProxy<SchedulePatientUseCase>;
+  let jwt: MockProxy<Jwt>;
   let schedulePatientController: SchedulePatientController;
 
   beforeAll(() => {
@@ -15,8 +17,9 @@ describe('Suit tests for Update Schedule Controller', () => {
 
   beforeEach(() => {
     schedulePatientUseCase = mock();
+    jwt = mock();
 
-    schedulePatientController = new SchedulePatientController(schedulePatientUseCase);
+    schedulePatientController = new SchedulePatientController(schedulePatientUseCase, jwt);
   });
 
   afterAll(() => {
@@ -39,9 +42,13 @@ describe('Suit tests for Update Schedule Controller', () => {
         patientId: '123',
         scheduleId: '456',
       },
+      headers: {
+        authorization: '123',
+      },
     };
 
     schedulePatientUseCase.execute.mockRejectedValue(new Error());
+    jwt.login.mockResolvedValue('123' as never);
 
     const { code } = await schedulePatientController.execute(input);
 
@@ -54,10 +61,14 @@ describe('Suit tests for Update Schedule Controller', () => {
         patientId: '123',
         scheduleId: '456',
       },
+      headers: {
+        authorization: '123',
+      },
     };
 
     const schedule = mock<Schedule>();
     schedulePatientUseCase.execute.mockResolvedValue({ schedule });
+    jwt.login.mockResolvedValue('123' as never);
 
     const { code } = await schedulePatientController.execute(input);
 

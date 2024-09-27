@@ -4,15 +4,18 @@ import { ScheduleRepository } from '@/domain/repositories/schedule';
 import { Doctor } from '@/entities/doctor.entity';
 import { Schedule } from '@/entities/schedule.entity';
 import { SchedulePatientUseCase } from '@/domain/usecases/schedulePatient/schedulePatient.usecase';
-import { DoctorNotFound, ScheduleNotFound } from '@/domain/errors';
+import { ScheduleNotFound } from '@/domain/errors';
+import { ScheduleNotificationSender } from '@/domain/clients/scheduleNotificationSender';
 
 describe('Suit tests for Update Schedule Use Case', () => {
   let scheduleRepository: MockProxy<ScheduleRepository>;
+  let scheduleNotificationSender: MockProxy<ScheduleNotificationSender>;
   let schedulePatientUseCase: SchedulePatientUseCase;
 
   beforeEach(() => {
     scheduleRepository = mock();
-    schedulePatientUseCase = new SchedulePatientUseCase(scheduleRepository);
+    scheduleNotificationSender = mock();
+    schedulePatientUseCase = new SchedulePatientUseCase(scheduleRepository, scheduleNotificationSender);
   });
 
   it('should be able to update schedule for patient', async () => {
@@ -57,6 +60,7 @@ describe('Suit tests for Update Schedule Use Case', () => {
     expect(scheduleRepository.findById).toHaveBeenCalledTimes(1);
     expect(scheduleRepository.update)
       .toHaveBeenCalledTimes(1);
+    expect(scheduleNotificationSender.notify).toHaveBeenCalledTimes(1);
   });
 
   it('should be able to update schedule for patient', async () => {
@@ -73,6 +77,8 @@ describe('Suit tests for Update Schedule Use Case', () => {
       .rejects
       .toThrowError(scheduleNotFound);
     expect(scheduleRepository.findOpenSchedules)
+      .toHaveBeenCalledTimes(0);
+    expect(scheduleNotificationSender.notify)
       .toHaveBeenCalledTimes(0);
   });
 });

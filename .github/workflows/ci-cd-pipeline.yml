@@ -59,7 +59,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
             task-definition: health_fusion_app.json
-            container-name: ${{ vars.MY_CONTAINER_NAME   }}
+            container-name: ${{ vars.ECS_TASK_DEFINITION }}
             image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition

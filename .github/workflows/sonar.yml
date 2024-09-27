@@ -43,7 +43,7 @@ jobs:
             -Dsonar.organization=HealthFusion-Fiap/
             -Dsonar.sources=src/
             -Dsonar.tests=src/
-            -Dsonar.test.inclusions=**/*.spec.js,**/*.test.js
+            -Dsonar.test.inclusions=**/*.spec.ts,**/*.test.ts
             -Dsonar.coverage.reportPaths=coverage/lcov.info
 
             # Exclude specific files or directories from analysis

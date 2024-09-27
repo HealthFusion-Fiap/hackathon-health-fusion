@@ -64,10 +64,15 @@ jobs:
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          ECR_NAME: ${{ vars.ECR_NAME }}
+          AWS_ACCOUNT_ID: ${{vars.AWS_ACCOUNT_ID}}
         with:
             task-definition: task_definition.json
             container-name: ${{ vars.MY_CONTAINER_NAME }}
-            image: 211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:latest
+            #image: 211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:latest
+            image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_NAME
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
@@ -75,4 +80,4 @@ jobs:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: ${{ vars.ECS_SERVICE }}
           cluster: ${{ vars.ECS_CLUSTER }}
-          wait-for-service-stability: true
+          #wait-for-service-stability: true

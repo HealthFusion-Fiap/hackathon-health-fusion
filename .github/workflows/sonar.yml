@@ -1,0 +1,55 @@
+name: SonarCloud analysis
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
+jobs:
+  Analysis:
+    name: Static analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # Change this to your desired Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run unit tests
+        run: npm test -- --coverage
+
+      - name: Analyze with SonarCloud
+        uses: SonarSource/sonarcloud-github-action@v2.2.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
+        with:
+          # Additional arguments for the SonarScanner CLI
+          args:
+            # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
+            # mandatory
+            -Dsonar.projectKey=hackathon-health-fusion
+            -Dsonar.organization=HealthFusion-Fiap/
+            -Dsonar.sources=src/
+            -Dsonar.tests=src/
+            -Dsonar.test.inclusions=**/*.spec.js,**/*.test.js
+            -Dsonar.coverage.reportPaths=coverage/lcov.info
+
+            # Exclude specific files or directories from analysis
+            -Dsonar.exclusions=**/mocks/**,**/tests/**
+
+            # Adds more detail to both client and server-side analysis logs, activating DEBUG mode for the scanner
+          # -Dsonar.verbose=true # optional, default is false
+
+          projectBaseDir: .

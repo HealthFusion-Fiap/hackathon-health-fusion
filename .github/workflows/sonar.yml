@@ -36,21 +36,19 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
         with:
           # Additional arguments for the SonarScanner CLI
-          args:
-            # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
-            # mandatory
+          args: |
             -Dsonar.projectKey=hackathon-health-fusion
-            -Dsonar.organization=HealthFusion-Fiap/
+            -Dsonar.organization=HealthFusion-Fiap
             -Dsonar.sources=src/
             -Dsonar.tests=src/
             -Dsonar.test.inclusions=**/*.spec.ts,**/*.test.ts
-            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
-            -Dsonar.typescript.tsconfigPaths=./tsconfig.json
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.typescript.tsconfigPaths=tsconfig.json
 
             # Exclude specific files or directories from analysis
             -Dsonar.exclusions=**/mocks/**,**/tests/**
 
             # Adds more detail to both client and server-side analysis logs, activating DEBUG mode for the scanner
-          # -Dsonar.verbose=true # optional, default is false
+            # -Dsonar.verbose=true # optional, default is false
 
           projectBaseDir: .

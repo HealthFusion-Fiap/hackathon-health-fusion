@@ -7,12 +7,12 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "npm i && tsc && tsc-alias && cp package*.json dist/ && npm install --production --prefix dist && cp -r prisma dist/",
+    "build": "npm i && tsc && tsc-alias && cp package*.json dist/ && npm install --production --prefix dist && cp -r prisma dist/ && npx prisma generate --schema=./prisma/schema.prisma",
     "lint": "eslint --ext .ts src",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "migrate": "npx prisma migrate dev",
-    "start": "npx --prefix dist prisma generate && node dist/src/infra/api/server.js",
+    "start": "npx --prefix dist prisma generate --schema=./dist/prisma/schema.prisma && node dist/src/infra/api/server.js",
     "dev": "npm i && npm run migrate && nodemon -r tsconfig-paths/register src/infra/api/server.ts"
   },
   "author": "Team Fusion",

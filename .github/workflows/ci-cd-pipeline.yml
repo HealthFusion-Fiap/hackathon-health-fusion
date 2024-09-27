@@ -71,8 +71,7 @@ jobs:
         with:
             task-definition: task_definition.json
             container-name: ${{ vars.MY_CONTAINER_NAME }}
-            #image: 211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:latest
-            image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_NAME
+            image: 211125364272.dkr.ecr.us-east-1.amazonaws.com/health-fusion-ecr:latest
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1

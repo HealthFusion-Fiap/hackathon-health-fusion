@@ -17,8 +17,8 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
-  build-and-push-image:
-    name: Put image on ECR
+  build-and-deploy:
+    name: CD Pipeline - Continuous Delivery Pipeline
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:

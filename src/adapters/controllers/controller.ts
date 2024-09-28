@@ -2,6 +2,7 @@ export type Request = {
   body?: Record<string, any>
   params?: Record<string, any>
   query?: Record<string, any>
+  headers?: Record<string, any>
   // authInfo?: AuthInfo
 }
 

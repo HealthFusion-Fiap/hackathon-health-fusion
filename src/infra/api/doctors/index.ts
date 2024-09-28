@@ -1,7 +1,7 @@
 import express from 'express';
+import { listDoctorSchedules } from '@/infra/api/doctors/listSchedule';
 import { createDoctor } from './create';
 import { listDoctors } from './list';
-import { listDoctorSchedules } from '@/infra/api/doctors/listSchedule';
 
 const doctorRoutes = express.Router();
 

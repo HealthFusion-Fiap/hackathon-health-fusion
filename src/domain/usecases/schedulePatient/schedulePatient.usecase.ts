@@ -1,10 +1,10 @@
+import { ScheduleNotificationSender } from '@/domain/clients/scheduleNotificationSender';
 import { ScheduleNotFound } from '@/domain/errors';
 import { ScheduleRepository } from '@/domain/repositories/schedule';
 import {
   SchedulePatientInput,
   SchedulePatientOutput,
 } from '@/domain/usecases/schedulePatient/dtos';
-import { ScheduleNotificationSender } from '@/domain/clients/scheduleNotificationSender';
 
 export class SchedulePatientUseCase {
   constructor(private scheduleRepository: ScheduleRepository, private notificationProducer: ScheduleNotificationSender) { }

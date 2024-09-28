@@ -1,25 +1,23 @@
 {
 	"info": {
-		"_postman_id": "7706819a-19f6-4260-8869-056f5145254e",
+		"_postman_id": "1c0deb95-f32e-4f15-96a8-6a2a74caaec4",
 		"name": "Health-Fusion",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "6621286"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "12945391"
 	},
 	"item": [
 		{
 			"name": "/doctors",
 			"request": {
 				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{DOMAIN}}/doctors",
-					"host": [
-						"{{DOMAIN}}"
-					],
-					"path": [
-						"doctors"
-					]
-				}
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZlMDkyMTg3LTk5ODQtNDBkYi05NGRjLTI2NWY3YmRlZTc3OSIsImlhdCI6MTcyNzQzODIzNiwiZXhwIjoxNzI4MDQzMDM2fQ.3k7ypy5Qu5pO-vTiTrBb7jA40DT26HWeZLTVrrg6nW8",
+						"type": "text"
+					}
+				],
+				"url": "{{DOMAIN}}/doctors"
 			},
 			"response": [
 				{
@@ -27,15 +25,7 @@
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{DOMAIN}}/doctors",
-							"host": [
-								"{{DOMAIN}}"
-							],
-							"path": [
-								"doctors"
-							]
-						}
+						"url": "{{DOMAIN}}/doctors"
 					},
 					"status": "OK",
 					"code": 200,
@@ -79,7 +69,13 @@
 			"name": "/doctors/:doctorId/schedules",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZlMDkyMTg3LTk5ODQtNDBkYi05NGRjLTI2NWY3YmRlZTc3OSIsImlhdCI6MTcyNzQzODIzNiwiZXhwIjoxNzI4MDQzMDM2fQ.3k7ypy5Qu5pO-vTiTrBb7jA40DT26HWeZLTVrrg6nW8",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{DOMAIN}}/doctors/:doctorId/schedules",
 					"host": [
@@ -93,7 +89,7 @@
 					"variable": [
 						{
 							"key": "doctorId",
-							"value": "46ffcbee-8582-48d4-b90c-1285ef196a56"
+							"value": "1"
 						}
 					]
 				}
@@ -174,15 +170,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{DOMAIN}}/doctors",
-					"host": [
-						"{{DOMAIN}}"
-					],
-					"path": [
-						"doctors"
-					]
-				}
+				"url": "{{DOMAIN}}/doctors"
 			},
 			"response": [
 				{
@@ -199,15 +187,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{DOMAIN}}/doctors",
-							"host": [
-								"{{DOMAIN}}"
-							],
-							"path": [
-								"doctors"
-							]
-						}
+						"url": "{{DOMAIN}}/doctors"
 					},
 					"status": "Conflict",
 					"code": 409,
@@ -259,15 +239,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{DOMAIN}}/doctors",
-							"host": [
-								"{{DOMAIN}}"
-							],
-							"path": [
-								"doctors"
-							]
-						}
+						"url": "{{DOMAIN}}/doctors"
 					},
 					"status": "Conflict",
 					"code": 409,
@@ -321,15 +293,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{DOMAIN}}/patients",
-					"host": [
-						"{{DOMAIN}}"
-					],
-					"path": [
-						"patients"
-					]
-				}
+				"url": "{{DOMAIN}}/patients"
 			},
 			"response": [
 				{
@@ -346,15 +310,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{DOMAIN}}/patients",
-							"host": [
-								"{{DOMAIN}}"
-							],
-							"path": [
-								"patients"
-							]
-						}
+						"url": "{{DOMAIN}}/patients"
 					},
 					"status": "Created",
 					"code": 201,
@@ -408,17 +364,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{DOMAIN}}/auth/doctor/login",
-					"host": [
-						"{{DOMAIN}}"
-					],
-					"path": [
-						"auth",
-						"doctor",
-						"login"
-					]
-				}
+				"url": "{{DOMAIN}}/auth/doctor/login"
 			},
 			"response": [
 				{
@@ -435,17 +381,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{DOMAIN}}/auth/doctor/login",
-							"host": [
-								"{{DOMAIN}}"
-							],
-							"path": [
-								"auth",
-								"doctor",
-								"login"
-							]
-						}
+						"url": "{{DOMAIN}}/auth/doctor/login"
 					},
 					"status": "OK",
 					"code": 200,
@@ -499,17 +435,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{DOMAIN}}/auth/patient/login",
-					"host": [
-						"{{DOMAIN}}"
-					],
-					"path": [
-						"auth",
-						"patient",
-						"login"
-					]
-				}
+				"url": "{{DOMAIN}}/auth/patient/login"
 			},
 			"response": [
 				{
@@ -526,17 +452,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{DOMAIN}}/auth/patient/login",
-							"host": [
-								"{{DOMAIN}}"
-							],
-							"path": [
-								"auth",
-								"patient",
-								"login"
-							]
-						}
+						"url": "{{DOMAIN}}/auth/patient/login"
 					},
 					"status": "OK",
 					"code": 200,
@@ -580,25 +496,23 @@
 			"name": "/schedules",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1ZGY5MTc2LTM4NWMtNDYwYS05Nzc1LTVhMzc4ZGY1NWZhMCIsImlhdCI6MTcyNzQzNTUzMSwiZXhwIjoxNzI4MDQwMzMxfQ.xeLSgnHBpU51WQTB2SQ7QKbpwR_baK-lCwdOju_Pwes",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"doctorId\": \"46ffcbee-8582-48d4-b90c-1285ef196a56\",\r\n  \"startAt\": \"2024-10-05 10:30:00\",\r\n  \"endAt\": \"2024-10-05 10:45:00\"\r\n}\r\n",
+					"raw": "{\r\n\r\n  \"startAt\": \"2024-10-05T10:00:00Z\",\r\n  \"endAt\": \"2024-10-05T10:45:00Z\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": {
-					"raw": "{{DOMAIN}}/schedules",
-					"host": [
-						"{{DOMAIN}}"
-					],
-					"path": [
-						"schedules"
-					]
-				}
+				"url": "{{DOMAIN}}/schedules"
 			},
 			"response": [
 				{
@@ -615,15 +529,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{DOMAIN}}/schedules",
-							"host": [
-								"{{DOMAIN}}"
-							],
-							"path": [
-								"schedules"
-							]
-						}
+						"url": "{{DOMAIN}}/schedules"
 					},
 					"status": "Created",
 					"code": 201,
@@ -667,10 +573,16 @@
 			"name": "/schedules/:scheduleId",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1ZGY5MTc2LTM4NWMtNDYwYS05Nzc1LTVhMzc4ZGY1NWZhMCIsImlhdCI6MTcyNzQzNzc3OSwiZXhwIjoxNzI4MDQyNTc5fQ.fEoeS6bho6gtXdCCR7MDKsyfBu226zJ7KzAj0mw-JeM",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"startAt\": \"2024-10-05 10:30:00\",\r\n  \"endAt\": \"2024-10-05 10:46:00\"\r\n}\r\n",
+					"raw": "{\r\n  \"startAt\": \"2024-10-05T10:30:00Z\",\r\n  \"endAt\": \"2024-10-05T10:46:00Z\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -689,7 +601,7 @@
 					"variable": [
 						{
 							"key": "scheduleId",
-							"value": "3d45cb54-5b61-428e-b953-73ff22972e87"
+							"value": "e9706534-14b6-4783-b9c7-c204a188dd49"
 						}
 					]
 				}
@@ -768,7 +680,13 @@
 			"name": "/patients/:patientId/schedules/:scheduleId",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZlMDkyMTg3LTk5ODQtNDBkYi05NGRjLTI2NWY3YmRlZTc3OSIsImlhdCI6MTcyNzQzODIzNiwiZXhwIjoxNzI4MDQzMDM2fQ.3k7ypy5Qu5pO-vTiTrBb7jA40DT26HWeZLTVrrg6nW8",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{DOMAIN}}/patients/:patientId/schedules/:scheduleId",
 					"host": [
@@ -787,7 +705,7 @@
 						},
 						{
 							"key": "scheduleId",
-							"value": "3d45cb54-5b61-428e-b953-73ff22972e87"
+							"value": "e9706534-14b6-4783-b9c7-c204a188dd49"
 						}
 					]
 				}

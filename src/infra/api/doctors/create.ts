@@ -2,9 +2,9 @@ import { PrismaClient } from '@prisma/client';
 import express, { Request, Response } from 'express';
 import { CreateDoctorController } from '@/adapters/controllers/createDoctor.controller';
 import CreateDoctorUsecase from '@/domain/usecases/createDoctor/createDoctor.usecase';
-import { BcryptHasher } from '@/infra/services/bcryptHasher';
 import { PrismaDoctorRepository } from '@/infra/database/prisma/doctor.repository';
 import validator from '@/infra/middlewares/validator';
+import { BcryptHasher } from '@/infra/services/bcryptHasher';
 
 export const createDoctor = express.Router();
 

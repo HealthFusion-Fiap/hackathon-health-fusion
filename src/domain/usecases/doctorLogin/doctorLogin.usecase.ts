@@ -25,7 +25,7 @@ export default class DoctorLoginUsecase {
       throw new InvalidPassword();
     }
 
-    const token = this.jwt.sign({ doctorId: doctor.id });
+    const token = this.jwt.sign({ id: doctor.id });
 
     return { token };
   }

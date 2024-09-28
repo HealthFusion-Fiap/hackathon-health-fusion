@@ -7,7 +7,7 @@ variable "database_prisma_start" {
 }
 
 variable "database_prisma_end" {
-  default = "/health_fusion?schema=public"
+  default = "/postgres?schema=public"
 }
 
 data "template_file" "health_fusion_app" {
@@ -18,6 +18,9 @@ data "template_file" "health_fusion_app" {
     app_port       = var.app_port
     fargate_cpu    = var.fargate_cpu
     fargate_memory = var.fargate_memory
+    mj_public_key  = var.mj_public_key
+    mj_private_key = var.mj_private_key
+    mj_sender      = var.mj_sender
     aws_region     = var.region
     // database_url   = "postgresql://postgres:rootroot@postgres-customer.c9emy44wan4g.us-east-1.rds.amazonaws.com:5432/health_fusion?schema=public"
     database_url = "${var.database_prisma_start}${local.rw_db_username}:${local.rw_db_password}@${local.rw_db_endpoint}${var.database_prisma_end}"

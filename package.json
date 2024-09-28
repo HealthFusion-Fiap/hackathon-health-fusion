@@ -12,7 +12,7 @@
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "migrate": "npx prisma migrate dev",
-    "start": "npx --prefix dist prisma generate --schema=./dist/prisma/schema.prisma && node dist/src/infra/api/server.js",
+    "start": "npx --prefix dist prisma generate --schema=./dist/prisma/schema.prisma && npx prisma migrate deploy && node dist/src/infra/api/server.js",
     "dev": "npm i && npm run migrate && nodemon -r tsconfig-paths/register src/infra/api/server.ts"
   },
   "author": "Team Fusion",

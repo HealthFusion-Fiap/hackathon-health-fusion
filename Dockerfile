@@ -19,5 +19,5 @@ RUN npm run build
 # Expose the port the app runs on
 EXPOSE 3000
 
-# Comando para rodar a aplicação e aplicar as migrations
-CMD npx prisma migrate deploy ; npm start
+# Comando para rodar a aplicação
+CMD ["npm", "start"]

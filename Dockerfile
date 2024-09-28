@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Comando para rodar a aplicação e aplicar as migrations
-CMD ["npx", "prisma", "migrate", "deploy", "&&", "npm", "start"]
+CMD npx prisma migrate deploy ; npm start

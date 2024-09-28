@@ -38,7 +38,7 @@ jobs:
           # Additional arguments for the SonarScanner CLI
           args: |
             -Dsonar.projectKey=HealthFusion-Fiap_hackathon-health-fusion
-            -Dsonar.organization=healthFusion-fiap
+            -Dsonar.organization=healthfusion-fiap
             -Dsonar.sources=src/
             -Dsonar.tests=src/
             -Dsonar.test.inclusions=**/*.spec.ts,**/*.test.ts

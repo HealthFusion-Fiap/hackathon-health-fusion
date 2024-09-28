@@ -16,11 +16,8 @@ COPY . .
 # Build the application (if needed)
 RUN npm run build
 
-# create DB schema
-RUN npx prisma migrate deploy
-
 # Expose the port the app runs on
 EXPOSE 3000
 
-# Comando para rodar a aplicação
-CMD ["npm", "start"]
+# Comando para rodar a aplicação e aplicar as migrations
+CMD ["npx", "prisma", "migrate", "deploy", "&&", "npm", "start"]

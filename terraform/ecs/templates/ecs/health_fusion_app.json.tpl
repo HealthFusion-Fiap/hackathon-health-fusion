@@ -10,6 +10,18 @@
       {
         "name": "DATABASE_URL",
         "value": "${database_url}"
+      },
+      {
+        "name": "MJ_APIKEY_PUBLIC",
+        "value": "${mj_public_key}"
+      },
+      {
+        "name": "MJ_APIKEY_PRIVATE",
+        "value": "${mj_private_key}"
+      },
+      {
+        "name": "MJ_MAIL_SENDER",
+        "value": "${mj_sender}"
       }
     ],
     "cpu": ${fargate_cpu},

@@ -52,3 +52,18 @@ variable "fargate_memory" {
   description = "Fargate instance memory to provision (in MiB)"
   default     = "2048"
 }
+
+variable "mj_public_key" {
+  description = "Public Key from MailJet"
+  default     = ""
+}
+
+variable "mj_private_key" {
+  description = "Private Key from MailJet"
+  default     = ""
+}
+
+variable "mj_sender" {
+  description = "Sender Key from MailJet"
+  default     = ""
+}

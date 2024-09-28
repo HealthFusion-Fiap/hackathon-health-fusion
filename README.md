@@ -3,6 +3,8 @@
 **Desenho da arquitetura:**
 ![image](https://github.com/user-attachments/assets/d6aa35f8-2267-4ea0-9fdd-abc483b736f3)
 
+Vídeo da apresentação: https://youtu.be/nMSY0whXTTU
+
 **Especificações:**
 
 Linguagem: NodeJS com Typescript

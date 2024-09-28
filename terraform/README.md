@@ -7,6 +7,8 @@ APPLY:
 - `ecr`, `ecs`, `rds`, e podem ser provisionados simultaneamente
 
 - Comando para provisionar `rds`: `terraform apply -var="rw_db_password=rootroot"`
+  
+- Comando para provisionar o `ecs`: terraform apply -var="mj_public_key=PUBLIC_KEY_FROM_MAIL_JET" -var="mj_private_key=PRIVATE_KEY_FROM_MAIL_JET" -var="mj_sender=MOCK_EMAIL"
 
 DESTROY:
 - O comando destroy pode ser executado simultaneamente em `ecs`, `rds`, e `sns`

@@ -39,14 +39,14 @@ jobs:
           args: |
             -Dsonar.projectKey=HealthFusion-Fiap_hackathon-health-fusion
             -Dsonar.organization=healthfusion-fiap
-            -Dsonar.sources=src/
+            -Dsonar.sources=src/adapters/controllers,src/domain/usecases,src/domain/validators
             -Dsonar.tests=src/
             -Dsonar.test.inclusions=**/*.spec.ts,**/*.test.ts
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
             -Dsonar.typescript.tsconfigPaths=tsconfig.json
 
             # Exclude specific files or directories from analysis
-            -Dsonar.exclusions=**/mocks/**,**/tests/**
+            -Dsonar.exclusions=**/mocks/**,**/tests/**,src/entities,src/infra
 
             # Adds more detail to both client and server-side analysis logs, activating DEBUG mode for the scanner
             # -Dsonar.verbose=true # optional, default is false

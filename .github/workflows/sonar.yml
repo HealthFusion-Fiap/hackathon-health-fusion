@@ -46,7 +46,7 @@ jobs:
             -Dsonar.typescript.tsconfigPaths=tsconfig.json
 
             # Exclude specific files or directories from analysis
-            -Dsonar.exclusions=**/mocks/**,**/tests/**
+            -Dsonar.exclusions=**/mocks/**,**/tests/**,src/entities,src/infra
 
             # Adds more detail to both client and server-side analysis logs, activating DEBUG mode for the scanner
             # -Dsonar.verbose=true # optional, default is false

@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://postgres:rootroot@postgres-health-fusion.c9emy44wan4g.us-east-1.rds.amazonaws.com:5432/health_fusion?schema=public"
 }
 
 model Doctor {

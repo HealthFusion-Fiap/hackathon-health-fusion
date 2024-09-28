@@ -16,6 +16,9 @@ COPY . .
 # Build the application (if needed)
 RUN npm run build
 
+# create DB schema
+RUN npx prisma migrate deploy
+
 # Expose the port the app runs on
 EXPOSE 3000
 
